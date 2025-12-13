@@ -19,6 +19,10 @@ class Class(str, Enum):
     WIZARD = "Wizard"
 
 
+class ClassResponse(BaseModel):
+    classes: list[Class]
+
+
 class Stats(BaseModel):
     strength: int
     dexterity: int

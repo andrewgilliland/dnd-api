@@ -1,3 +1,3 @@
-from .schemas import Character, CharactersResponse, Stats
+from .schemas import Character, CharactersResponse, Stats, Class
 
-__all__ = ["Character", "CharactersResponse", "Stats"]
+__all__ = ["Character", "CharactersResponse", "Stats", "Class"]
