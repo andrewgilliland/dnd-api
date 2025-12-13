@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Tanis Half-Elven",
     "race": "Half-Elf",
-    "class": "Fighter/Ranger",
+    "class": "Ranger",
     "alignment": "Neutral Good",
     "description": "Leader of the Heroes of the Lance, struggling with his dual heritage",
     "stats": {
@@ -51,7 +51,7 @@
     "id": 4,
     "name": "Sturm Brightblade",
     "race": "Human",
-    "class": "Knight",
+    "class": "Fighter",
     "alignment": "Lawful Good",
     "description": "Noble Knight of Solamnia, dedicated to the Oath and the Measure",
     "stats": {
@@ -147,7 +147,7 @@
     "id": 10,
     "name": "Laurana Kanan",
     "race": "Elf",
-    "class": "Fighter/Princess",
+    "class": "Fighter",
     "alignment": "Lawful Good",
     "description": "Elven princess who becomes the Golden General",
     "stats": {

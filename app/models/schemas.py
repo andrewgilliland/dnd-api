@@ -1,4 +1,22 @@
 from pydantic import BaseModel, Field
+from enum import Enum
+
+
+class Class(str, Enum):
+    """D&D 5e character classes"""
+
+    BARBARIAN = "Barbarian"
+    BARD = "Bard"
+    CLERIC = "Cleric"
+    DRUID = "Druid"
+    FIGHTER = "Fighter"
+    MONK = "Monk"
+    PALADIN = "Paladin"
+    RANGER = "Ranger"
+    ROGUE = "Rogue"
+    SORCERER = "Sorcerer"
+    WARLOCK = "Warlock"
+    WIZARD = "Wizard"
 
 
 class Stats(BaseModel):
@@ -14,7 +32,7 @@ class Character(BaseModel):
     id: int
     name: str
     race: str
-    class_: str = Field(alias="class")  # 'class' is a reserved keyword
+    class_: Class = Field(alias="class")  # 'class' is a reserved keyword
     alignment: str
     description: str
     stats: Stats
