@@ -5,7 +5,15 @@
     "race": "Half-Elf",
     "class": "Fighter/Ranger",
     "alignment": "Neutral Good",
-    "description": "Leader of the Heroes of the Lance, struggling with his dual heritage"
+    "description": "Leader of the Heroes of the Lance, struggling with his dual heritage",
+    "stats": {
+      "strength": 15,
+      "dexterity": 14,
+      "constitution": 14,
+      "intelligence": 13,
+      "wisdom": 16,
+      "charisma": 15
+    }
   },
   {
     "id": 2,
@@ -13,7 +21,15 @@
     "race": "Human",
     "class": "Wizard",
     "alignment": "Neutral Evil",
-    "description": "Ambitious mage with hourglass eyes and golden skin, Master of Past and Present"
+    "description": "Ambitious mage with hourglass eyes and golden skin, Master of Past and Present",
+    "stats": {
+      "strength": 8,
+      "dexterity": 10,
+      "constitution": 10,
+      "intelligence": 18,
+      "wisdom": 16,
+      "charisma": 10
+    }
   },
   {
     "id": 3,
@@ -21,7 +37,15 @@
     "race": "Human",
     "class": "Fighter",
     "alignment": "Neutral Good",
-    "description": "Raistlin's twin brother, strong and loyal warrior"
+    "description": "Raistlin's twin brother, strong and loyal warrior",
+    "stats": {
+      "strength": 18,
+      "dexterity": 14,
+      "constitution": 17,
+      "intelligence": 10,
+      "wisdom": 12,
+      "charisma": 14
+    }
   },
   {
     "id": 4,
@@ -29,7 +53,15 @@
     "race": "Human",
     "class": "Knight",
     "alignment": "Lawful Good",
-    "description": "Noble Knight of Solamnia, dedicated to the Oath and the Measure"
+    "description": "Noble Knight of Solamnia, dedicated to the Oath and the Measure",
+    "stats": {
+      "strength": 17,
+      "dexterity": 12,
+      "constitution": 15,
+      "intelligence": 12,
+      "wisdom": 14,
+      "charisma": 16
+    }
   },
   {
     "id": 5,
@@ -37,7 +69,15 @@
     "race": "Kender",
     "class": "Rogue",
     "alignment": "Neutral Good",
-    "description": "Curious and fearless kender with a talent for 'finding' things"
+    "description": "Curious and fearless kender with a talent for 'finding' things",
+    "stats": {
+      "strength": 10,
+      "dexterity": 18,
+      "constitution": 12,
+      "intelligence": 13,
+      "wisdom": 8,
+      "charisma": 14
+    }
   },
   {
     "id": 6,
@@ -45,7 +85,15 @@
     "race": "Dwarf",
     "class": "Fighter",
     "alignment": "Neutral Good",
-    "description": "Grumpy but kind-hearted dwarven weaponsmith"
+    "description": "Grumpy but kind-hearted dwarven weaponsmith",
+    "stats": {
+      "strength": 16,
+      "dexterity": 11,
+      "constitution": 17,
+      "intelligence": 11,
+      "wisdom": 13,
+      "charisma": 10
+    }
   },
   {
     "id": 7,
@@ -53,7 +101,15 @@
     "race": "Human",
     "class": "Cleric",
     "alignment": "Lawful Good",
-    "description": "Chieftain's daughter and first true cleric of Mishakal in centuries"
+    "description": "Chieftain's daughter and first true cleric of Mishakal in centuries",
+    "stats": {
+      "strength": 12,
+      "dexterity": 13,
+      "constitution": 14,
+      "intelligence": 13,
+      "wisdom": 18,
+      "charisma": 16
+    }
   },
   {
     "id": 8,
@@ -61,7 +117,15 @@
     "race": "Human",
     "class": "Ranger",
     "alignment": "Lawful Good",
-    "description": "Plainsman warrior and Goldmoon's devoted husband"
+    "description": "Plainsman warrior and Goldmoon's devoted husband",
+    "stats": {
+      "strength": 17,
+      "dexterity": 15,
+      "constitution": 16,
+      "intelligence": 11,
+      "wisdom": 14,
+      "charisma": 12
+    }
   },
   {
     "id": 9,
@@ -69,7 +133,15 @@
     "race": "Human",
     "class": "Fighter",
     "alignment": "Lawful Evil",
-    "description": "Dragon Highlord and half-sister to Caramon and Raistlin"
+    "description": "Dragon Highlord and half-sister to Caramon and Raistlin",
+    "stats": {
+      "strength": 16,
+      "dexterity": 16,
+      "constitution": 14,
+      "intelligence": 14,
+      "wisdom": 12,
+      "charisma": 15
+    }
   },
   {
     "id": 10,
@@ -77,7 +149,15 @@
     "race": "Elf",
     "class": "Fighter/Princess",
     "alignment": "Lawful Good",
-    "description": "Elven princess who becomes the Golden General"
+    "description": "Elven princess who becomes the Golden General",
+    "stats": {
+      "strength": 14,
+      "dexterity": 16,
+      "constitution": 13,
+      "intelligence": 14,
+      "wisdom": 15,
+      "charisma": 17
+    }
   },
   {
     "id": 11,
@@ -85,7 +165,15 @@
     "race": "Human",
     "class": "Wizard",
     "alignment": "Chaotic Good",
-    "description": "Seemingly absent-minded wizard, actually Paladine in disguise"
+    "description": "Seemingly absent-minded wizard, actually Paladine in disguise",
+    "stats": {
+      "strength": 10,
+      "dexterity": 12,
+      "constitution": 14,
+      "intelligence": 20,
+      "wisdom": 20,
+      "charisma": 18
+    }
   },
   {
     "id": 12,
@@ -93,6 +181,14 @@
     "race": "Human",
     "class": "Fighter",
     "alignment": "Neutral Good",
-    "description": "Former barmaid who became a skilled warrior"
+    "description": "Former barmaid who became a skilled warrior",
+    "stats": {
+      "strength": 14,
+      "dexterity": 15,
+      "constitution": 15,
+      "intelligence": 11,
+      "wisdom": 13,
+      "charisma": 14
+    }
   }
 ]
