@@ -19,6 +19,20 @@ class Class(str, Enum):
     WIZARD = "Wizard"
 
 
+class Race(str, Enum):
+    """D&D 5e character races"""
+
+    DRAGONBORN = "Dragonborn"
+    DWARF = "Dwarf"
+    ELF = "Elf"
+    GNOME = "Gnome"
+    HALF_ELF = "Half-Elf"
+    HALF_ORC = "Half-Orc"
+    HALFLING = "Halfling"
+    HUMAN = "Human"
+    TIEFLING = "Tiefling"
+
+
 class ClassResponse(BaseModel):
     classes: list[Class]
 
@@ -35,7 +49,7 @@ class Stats(BaseModel):
 class Character(BaseModel):
     id: int
     name: str
-    race: str
+    race: Race
     class_: Class = Field(alias="class")  # 'class' is a reserved keyword
     alignment: str
     description: str
