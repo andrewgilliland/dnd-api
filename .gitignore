@@ -10,3 +10,9 @@ wheels/
 .venv
 
 .env
+
+/package
+
+# SAM
+.aws-sam/
+samconfig.toml
