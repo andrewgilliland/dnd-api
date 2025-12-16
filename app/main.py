@@ -1,6 +1,6 @@
+from fastapi import FastAPI
 import json
 from pathlib import Path
-from fastapi import FastAPI
 
 from app.models import CharactersResponse, ClassResponse, Class, Race
 

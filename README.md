@@ -112,3 +112,5 @@ Once deployed, find your API Gateway URL in the SAM deploy output or CloudFormat
 ```
 https://<api-gateway-url>/Prod/docs
 ```
+
+[Anatomy of a Scalable Python Project (FastAPI)](https://www.youtube.com/watch?v=Af6Zr0tNNdE)
