@@ -9,4 +9,4 @@ def test_get_races():
     assert response.status_code == 200
     data = response.json()
     assert "races" in data
-    assert isinstance(data["races"], list)
+    assert isinstance(data["race"], list)
