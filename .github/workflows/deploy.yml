@@ -1,14 +1,16 @@
-name: Deploy to Production
+name: Deploy to AWS
 
 on:
   push:
     branches:
+      - dev
+      - staging
       - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || github.ref == 'refs/heads/staging' && 'staging' || 'dev' }}
 
     permissions:
       id-token: write
@@ -17,6 +19,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Set environment variables
+        id: env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "environment=prod" >> $GITHUB_OUTPUT
+            echo "github_environment=production" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+            echo "environment=staging" >> $GITHUB_OUTPUT
+            echo "github_environment=staging" >> $GITHUB_OUTPUT
+          else
+            echo "environment=dev" >> $GITHUB_OUTPUT
+            echo "github_environment=dev" >> $GITHUB_OUTPUT
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,13 +52,13 @@ jobs:
       - name: SAM Build
         run: sam build --use-container
 
-      - name: SAM Deploy to Production
+      - name: SAM Deploy to ${{ steps.env.outputs.environment }}
         run: |
           sam deploy \
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \
-            --stack-name DndApiStack-prod \
+            --stack-name DndApiStack-${{ steps.env.outputs.environment }} \
             --capabilities CAPABILITY_IAM \
             --region us-east-1 \
-            --parameter-overrides Environment=prod \
-            --tags Environment=prod
+            --parameter-overrides Environment=${{ steps.env.outputs.environment }} \
+            --tags Environment=${{ steps.env.outputs.environment }}
