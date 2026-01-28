@@ -35,7 +35,17 @@ uv run uvicorn app.main:app --reload
 
 ## AWS Lambda Deployment
 
-### Build
+This project supports three environments: **dev**, **staging**, and **prod**.
+
+### Environments
+
+- **Dev**: Deploys automatically on push to `dev` branch → Lambda: `dnd-api-dev`
+- **Staging**: Deploys automatically on push to `staging` branch → Lambda: `dnd-api-staging`
+- **Production**: Deploys automatically on push to `main` branch (requires PR approval) → Lambda: `dnd-api-prod`
+
+### Manual Deployment
+
+#### Build
 
 Build the application for Lambda deployment:
 
@@ -49,34 +59,79 @@ Or use Docker for consistent builds (recommended if you have a different Python 
 sam build --use-container
 ```
 
-### Deploy
+#### Deploy to Specific Environment
 
-Deploy to AWS Lambda (first time, use guided mode):
-
-```bash
-sam deploy --guided
-```
-
-For subsequent deployments:
+Deploy to **dev**:
 
 ```bash
-sam deploy
+sam deploy --config-env dev
 ```
+
+Deploy to **staging**:
+
+```bash
+sam deploy --config-env staging
+```
+
+Deploy to **prod**:
+
+```bash
+sam deploy --config-env prod
+```
+
+First time deployment (guided mode):
+
+```bash
+sam deploy --guided --config-env dev
+```
+
+### GitHub Actions Setup
+
+The project uses GitHub Actions for CI/CD:
+
+1. **Tests** run on every push and PR to `dev`, `staging`, and `main`
+2. **Deployments** are automatic:
+   - `dev` branch → deploys to dev environment
+   - `staging` branch → deploys to staging environment
+   - `main` branch → deploys to production (requires PR approval)
+
+#### Required GitHub Configuration
+
+1. Go to **Settings** → **Environments** in your GitHub repo
+2. Create three environments: `dev`, `staging`, `production`
+3. For `production` environment:
+   - Enable **Required reviewers** (add team members who should approve)
+   - Optionally add **Wait timer** for additional safety
+4. Add `AWS_ROLE_ARN` secret at the repository level
 
 ### View Logs
 
-Check CloudWatch logs for your Lambda function:
+Check CloudWatch logs for your Lambda functions:
 
 ```bash
-sam logs -n DndApiFunction --stack-name DndApiStack --tail
+# Dev environment
+sam logs -n dnd-api-dev --stack-name DndApiStack-dev --tail
+
+# Staging environment
+sam logs -n dnd-api-staging --stack-name DndApiStack-staging --tail
+
+# Production environment
+sam logs -n dnd-api-prod --stack-name DndApiStack-prod --tail
 ```
 
 ### Delete Stack
 
-Remove all AWS resources:
+Remove AWS resources for a specific environment:
 
 ```bash
-sam delete --stack-name DndApiStack
+# Delete dev
+sam delete --stack-name DndApiStack-dev
+
+# Delete staging
+sam delete --stack-name DndApiStack-staging
+
+# Delete production
+sam delete --stack-name DndApiStack-prod
 ```
 
 ## Project Structure

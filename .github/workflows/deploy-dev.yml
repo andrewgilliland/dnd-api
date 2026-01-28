@@ -1,14 +1,14 @@
-name: Deploy to Production
+name: Deploy to Dev
 
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: dev
 
     permissions:
       id-token: write
@@ -36,13 +36,13 @@ jobs:
       - name: SAM Build
         run: sam build --use-container
 
-      - name: SAM Deploy to Production
+      - name: SAM Deploy to Dev
         run: |
           sam deploy \
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \
-            --stack-name DndApiStack-prod \
+            --stack-name DndApiStack-dev \
             --capabilities CAPABILITY_IAM \
             --region us-east-1 \
-            --parameter-overrides Environment=prod \
-            --tags Environment=prod
+            --parameter-overrides Environment=dev \
+            --tags Environment=dev
