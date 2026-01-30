@@ -21,6 +21,7 @@ class Settings(BaseModel):
     def __init__(self, **kwargs):
         # Override with environment variables
         env = os.getenv("ENVIRONMENT", "dev")
+        print(f"Loading settings for environment: {env}")
         debug = os.getenv("DEBUG", "true").lower() == "true"
 
         super().__init__(environment=env, debug=debug, **kwargs)
