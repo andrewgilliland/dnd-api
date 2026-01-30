@@ -29,6 +29,16 @@ def root():
     }
 
 
+@app.get("/health")
+def health_check():
+    """Health check endpoint for monitoring and load balancers"""
+    return {
+        "status": "healthy",
+        "environment": settings.environment,
+        "version": settings.api_version,
+    }
+
+
 # Include routers
 app.include_router(characters.router)
 app.include_router(monsters.router)
