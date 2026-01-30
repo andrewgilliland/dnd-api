@@ -1,0 +1,195 @@
+[
+  {
+    "id": 1,
+    "name": "Adult Red Dragon",
+    "size": "Huge",
+    "type": "Dragon",
+    "alignment": "Chaotic Evil",
+    "armor_class": 19,
+    "hit_points": 256,
+    "hit_dice": "19d12+133",
+    "speed": { "walk": 40, "climb": 40, "fly": 80 },
+    "stats": {
+      "strength": 27,
+      "dexterity": 10,
+      "constitution": 25,
+      "intelligence": 16,
+      "wisdom": 13,
+      "charisma": 21
+    },
+    "saving_throws": {
+      "dexterity": 6,
+      "constitution": 13,
+      "wisdom": 7,
+      "charisma": 11
+    },
+    "skills": { "perception": 13, "stealth": 6 },
+    "damage_immunities": ["Fire"],
+    "senses": { "blindsight": 60, "darkvision": 120, "passive_perception": 23 },
+    "languages": ["Common", "Draconic"],
+    "challenge_rating": 17.0,
+    "experience_points": 18000,
+    "special_abilities": [
+      {
+        "name": "Legendary Resistance",
+        "description": "If the dragon fails a saving throw, it can choose to succeed instead (3/Day)."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +14 to hit, reach 10 ft., one target.",
+        "attack_bonus": 14,
+        "damage_dice": "2d10+8",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Fire Breath",
+        "description": "The dragon exhales fire in a 60-foot cone. DC 21 Dexterity saving throw, 63 (18d6) fire damage on a failed save, or half as much on a successful one.",
+        "damage_dice": "18d6",
+        "damage_type": "Fire"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Goblin",
+    "size": "Small",
+    "type": "Humanoid",
+    "alignment": "Neutral Evil",
+    "armor_class": 15,
+    "hit_points": 7,
+    "hit_dice": "2d6",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 8,
+      "dexterity": 14,
+      "constitution": 10,
+      "intelligence": 10,
+      "wisdom": 8,
+      "charisma": 8
+    },
+    "skills": { "stealth": 6 },
+    "senses": { "darkvision": 60, "passive_perception": 9 },
+    "languages": ["Common", "Goblin"],
+    "challenge_rating": 0.25,
+    "experience_points": 50,
+    "special_abilities": [
+      {
+        "name": "Nimble Escape",
+        "description": "The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Scimitar",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d6+2",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Shortbow",
+        "description": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d6+2",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Beholder",
+    "size": "Large",
+    "type": "Aberration",
+    "alignment": "Lawful Evil",
+    "armor_class": 18,
+    "hit_points": 180,
+    "hit_dice": "19d10+76",
+    "speed": { "walk": 0, "fly": 20 },
+    "stats": {
+      "strength": 10,
+      "dexterity": 14,
+      "constitution": 18,
+      "intelligence": 17,
+      "wisdom": 15,
+      "charisma": 17
+    },
+    "saving_throws": { "intelligence": 8, "wisdom": 7, "charisma": 8 },
+    "skills": { "perception": 12 },
+    "condition_immunities": ["prone"],
+    "senses": { "darkvision": 120, "passive_perception": 22 },
+    "languages": ["Deep Speech", "Undercommon"],
+    "challenge_rating": 13.0,
+    "experience_points": 10000,
+    "special_abilities": [
+      {
+        "name": "Antimagic Cone",
+        "description": "The beholder's central eye creates an area of antimagic, as in the antimagic field spell, in a 150-foot cone."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target.",
+        "attack_bonus": 5,
+        "damage_dice": "4d6",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Eye Rays",
+        "description": "The beholder shoots three of the following magical eye rays at random (reroll duplicates), choosing one to three targets it can see within 120 feet of it."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Owlbear",
+    "size": "Large",
+    "type": "Monstrosity",
+    "alignment": "Unaligned",
+    "armor_class": 13,
+    "hit_points": 59,
+    "hit_dice": "7d10+21",
+    "speed": { "walk": 40 },
+    "stats": {
+      "strength": 20,
+      "dexterity": 12,
+      "constitution": 17,
+      "intelligence": 3,
+      "wisdom": 12,
+      "charisma": 7
+    },
+    "skills": { "perception": 3 },
+    "senses": { "darkvision": 60, "passive_perception": 13 },
+    "languages": [],
+    "challenge_rating": 3.0,
+    "experience_points": 700,
+    "special_abilities": [
+      {
+        "name": "Keen Sight and Smell",
+        "description": "The owlbear has advantage on Wisdom (Perception) checks that rely on sight or smell."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "description": "The owlbear makes two attacks: one with its beak and one with its claws."
+      },
+      {
+        "name": "Beak",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature.",
+        "attack_bonus": 7,
+        "damage_dice": "1d10+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claws",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target.",
+        "attack_bonus": 7,
+        "damage_dice": "2d8+5",
+        "damage_type": "Slashing"
+      }
+    ]
+  }
+]

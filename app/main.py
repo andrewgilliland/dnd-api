@@ -1,33 +1,45 @@
 from fastapi import FastAPI
-import json
-from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
 
-from app.models import CharactersResponse, ClassResponse, Class, Race
+from app.api import characters, monsters, game_data
+from app.config import settings
 
-app = FastAPI(title="D&D API")
+app = FastAPI(
+    title=settings.app_name,
+    version=settings.api_version,
+    debug=settings.debug,
+)
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
 def root():
-    return {"message": "Welcome to the D&D API"}
+    return {
+        "message": "Welcome to the D&D API",
+        "environment": settings.environment,
+        "version": settings.api_version,
+    }
 
 
-@app.get("/classes", response_model=ClassResponse)
-def get_classes():
-    """Return all D&D 5e character classes"""
-    return {"classes": [cls.value for cls in Class]}
+@app.get("/health")
+def health_check():
+    """Health check endpoint for monitoring and load balancers"""
+    return {
+        "status": "healthy",
+        "environment": settings.environment,
+        "version": settings.api_version,
+    }
 
 
-@app.get("/races")
-def get_races():
-    """Return all D&D 5e character races"""
-    return {"races": [race.value for race in Race]}
-
-
-@app.get("/characters", response_model=CharactersResponse)
-def get_characters():
-    """Return all D&D characters from Dragonlance"""
-    characters_file = Path(__file__).parent / "characters.json"
-    with open(characters_file, "r") as f:
-        characters = json.load(f)
-    return {"characters": characters}
+# Include routers
+app.include_router(characters.router)
+app.include_router(monsters.router)
+app.include_router(game_data.router)
