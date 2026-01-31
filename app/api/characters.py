@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 
-from app.models import CharactersResponse, Class, Race
+from app.models import CharactersResponse, Class, Race, Character
 from app.services.data_loader import load_characters
 
 router = APIRouter(prefix="/characters", tags=["characters"])
@@ -35,3 +35,23 @@ def get_characters(
         characters = [c for c in characters if name.lower() in c["name"].lower()]
 
     return {"characters": characters}
+
+
+@router.get("/{character_id}", response_model=Character)
+def get_character_by_id(character_id: int):
+    """
+    Get a single character by ID.
+
+    Returns:
+    - Character details if found
+    - 404 error if character not found
+    """
+    characters = load_characters()
+    character = next((c for c in characters if c["id"] == character_id), None)
+
+    if not character:
+        raise HTTPException(
+            status_code=404, detail=f"Character with id {character_id} not found"
+        )
+
+    return character
