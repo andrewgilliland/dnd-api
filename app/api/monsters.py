@@ -2,6 +2,7 @@ from fastapi import APIRouter, Query, HTTPException
 
 from app.models import MonstersResponse, MonsterType, Size, Monster
 from app.services.data_loader import load_monsters
+from app.services.monster_service import generate_random_monster
 
 router = APIRouter(prefix="/monsters", tags=["monsters"])
 
@@ -43,6 +44,34 @@ def get_monsters(
         monsters = [m for m in monsters if name.lower() in m["name"].lower()]
 
     return {"monsters": monsters}
+
+
+@router.get("/random", response_model=Monster)
+def get_random_monster(
+    type: MonsterType | None = Query(None, description="Filter by monster type"),
+    size: Size | None = Query(None, description="Filter by monster size"),
+    min_cr: float | None = Query(None, ge=0, description="Minimum challenge rating"),
+    max_cr: float | None = Query(None, ge=0, description="Maximum challenge rating"),
+):
+    """
+    Generate a random D&D monster.
+
+    Optional Filters:
+    - type: Monster type (e.g., Dragon, Beast, Humanoid)
+    - size: Monster size (e.g., Tiny, Small, Medium, Large)
+    - min_cr: Minimum challenge rating
+    - max_cr: Maximum challenge rating
+
+    Returns:
+    - A randomly generated monster with:
+      - Random or filtered type and size
+      - Challenge rating within specified range
+      - Appropriate stats, HP, AC, and actions for its CR
+      - Random alignment and abilities
+    """
+    return generate_random_monster(
+        monster_type=type, size=size, min_cr=min_cr, max_cr=max_cr
+    )
 
 
 @router.get("/{monster_id}", response_model=Monster)
