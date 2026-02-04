@@ -142,6 +142,141 @@ def calculate_xp_from_cr(challenge_rating: float) -> int:
     return xp_table.get(challenge_rating, int(challenge_rating * 1000))
 
 
+def generate_special_abilities(
+    monster_type: MonsterType, challenge_rating: float
+) -> list[Action] | None:
+    """Generate passive abilities and traits based on monster type"""
+
+    abilities_map = {
+        MonsterType.DRAGON: [
+            Action(
+                name="Frightful Presence",
+                description="Each creature within 60 feet that is aware of the dragon must succeed on a Wisdom saving throw or become frightened for 1 minute",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.UNDEAD: [
+            Action(
+                name="Undead Fortitude",
+                description="If damage reduces the creature to 0 hit points, it can make a Constitution saving throw to drop to 1 hit point instead",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.ABERRATION: [
+            Action(
+                name="Telepathy",
+                description="The creature can communicate telepathically with any creature within 120 feet that has a language",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.FIEND: [
+            Action(
+                name="Magic Resistance",
+                description="The creature has advantage on saving throws against spells and other magical effects",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.CELESTIAL: [
+            Action(
+                name="Divine Blessing",
+                description="The creature's weapon attacks are magical and deal an extra 2d8 radiant damage",
+                attack_bonus=None,
+                damage_dice="2d8",
+                damage_type=DamageType.RADIANT,
+            ),
+        ],
+        MonsterType.FEY: [
+            Action(
+                name="Fey Ancestry",
+                description="The creature has advantage on saving throws against being charmed, and magic can't put it to sleep",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.ELEMENTAL: [
+            Action(
+                name="Elemental Body",
+                description="The creature can move through spaces as narrow as 1 inch wide without squeezing",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.CONSTRUCT: [
+            Action(
+                name="Immutable Form",
+                description="The creature is immune to any spell or effect that would alter its form",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.OOZE: [
+            Action(
+                name="Amorphous",
+                description="The creature can move through spaces as narrow as 1 inch wide without squeezing",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.PLANT: [
+            Action(
+                name="False Appearance",
+                description="While motionless, the creature is indistinguishable from a normal plant",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+        MonsterType.BEAST: [
+            Action(
+                name="Keen Senses",
+                description="The creature has advantage on Wisdom (Perception) checks that rely on sight, hearing, or smell",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ]
+        if challenge_rating >= 2
+        else None,
+        MonsterType.GIANT: [
+            Action(
+                name="Powerful Build",
+                description="The creature counts as one size larger when determining its carrying capacity and the weight it can push, drag, or lift",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            ),
+        ],
+    }
+
+    abilities = abilities_map.get(monster_type)
+
+    # Add legendary resistance for high CR monsters
+    if challenge_rating >= 10 and abilities:
+        abilities.append(
+            Action(
+                name="Legendary Resistance (3/Day)",
+                description="If the creature fails a saving throw, it can choose to succeed instead",
+                attack_bonus=None,
+                damage_dice=None,
+                damage_type=None,
+            )
+        )
+
+    return abilities
+
+
 def generate_monster_actions(
     monster_type: MonsterType, challenge_rating: float
 ) -> list[Action]:
@@ -235,6 +370,7 @@ def generate_random_monster(
     hit_points, hit_dice = calculate_hp_from_cr(challenge_rating, size)
     armor_class = calculate_ac_from_cr(challenge_rating)
     experience_points = calculate_xp_from_cr(challenge_rating)
+    special_abilities = generate_special_abilities(monster_type, challenge_rating)
     actions = generate_monster_actions(monster_type, challenge_rating)
 
     # Generate speed based on type
@@ -260,6 +396,7 @@ def generate_random_monster(
         speed=speed,
         stats=stats,
         challenge_rating=challenge_rating,
+        special_abilities=special_abilities,
         experience_points=experience_points,
         actions=actions,
     )
