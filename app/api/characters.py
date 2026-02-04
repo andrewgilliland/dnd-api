@@ -2,6 +2,7 @@ from fastapi import APIRouter, Query, HTTPException
 
 from app.models import CharactersResponse, Class, Race, Character
 from app.services.data_loader import load_characters
+from app.services.character_service import generate_random_character
 
 router = APIRouter(prefix="/characters", tags=["characters"])
 
@@ -35,6 +36,20 @@ def get_characters(
         characters = [c for c in characters if name.lower() in c["name"].lower()]
 
     return {"characters": characters}
+
+
+@router.get("/random", response_model=Character)
+def get_random_character():
+    """
+    Generate a random D&D character.
+
+    Returns:
+    - A randomly generated character with:
+      - Random race, class, and alignment
+      - Random ability scores (4d6 drop lowest)
+      - Generated name and description
+    """
+    return generate_random_character()
 
 
 @router.get("/{character_id}", response_model=Character)
