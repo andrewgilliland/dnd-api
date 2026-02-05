@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 from app.models import ClassResponse, Class, Race
 
-router = APIRouter(tags=["game-data"])
+router = APIRouter()
 
 
 @router.get("/classes", response_model=ClassResponse)
