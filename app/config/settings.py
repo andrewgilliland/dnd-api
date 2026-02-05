@@ -1,3 +1,5 @@
+"""Application settings and environment configuration"""
+
 import os
 from functools import lru_cache
 from pydantic import BaseModel
@@ -36,6 +38,3 @@ def get_settings() -> Settings:
     - DEBUG: true, false
     """
     return Settings()
-
-
-settings = get_settings()
