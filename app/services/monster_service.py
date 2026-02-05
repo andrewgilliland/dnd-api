@@ -3,65 +3,15 @@
 import random
 from app.models import Monster, MonsterType, Size, Alignment, Stats, Action, DamageType
 from app.config.constants import XP_BY_CR, HIT_DICE_BY_SIZE
+from app.services.data_loader import load_monster_names
 
 
 def generate_random_monster_name(monster_type: MonsterType) -> str:
     """Generate a random monster name based on type"""
+    names_data = load_monster_names()
 
-    name_prefixes = {
-        MonsterType.DRAGON: ["Ancient", "Young", "Adult", "Elder", "Wyrm"],
-        MonsterType.UNDEAD: ["Cursed", "Haunted", "Restless", "Dread", "Fallen"],
-        MonsterType.FIEND: ["Infernal", "Abyssal", "Hellish", "Burning", "Dark"],
-        MonsterType.CELESTIAL: ["Radiant", "Divine", "Holy", "Blessed", "Sacred"],
-        MonsterType.ABERRATION: [
-            "Twisted",
-            "Corrupted",
-            "Mind-Bending",
-            "Eldritch",
-            "Strange",
-        ],
-        MonsterType.BEAST: ["Wild", "Savage", "Primal", "Feral", "Great"],
-        MonsterType.CONSTRUCT: ["Animated", "Mechanical", "Arcane", "Stone", "Iron"],
-        MonsterType.ELEMENTAL: ["Raging", "Primordial", "Pure", "Eternal", "Chaos"],
-        MonsterType.FEY: ["Enchanted", "Twilight", "Mystical", "Trickster", "Wild"],
-        MonsterType.GIANT: ["Towering", "Mighty", "Hill", "Stone", "Frost"],
-        MonsterType.HUMANOID: ["Savage", "Tribal", "Raiding", "War", "Blood"],
-        MonsterType.MONSTROSITY: [
-            "Monstrous",
-            "Hybrid",
-            "Chimeric",
-            "Cursed",
-            "Mutant",
-        ],
-        MonsterType.OOZE: ["Gelatinous", "Acidic", "Hungry", "Slithering", "Black"],
-        MonsterType.PLANT: ["Carnivorous", "Strangling", "Thorned", "Awakened", "Vine"],
-    }
-
-    name_suffixes = {
-        MonsterType.DRAGON: ["Dragon", "Drake", "Wyrm", "Dragonling"],
-        MonsterType.UNDEAD: ["Wraith", "Zombie", "Skeleton", "Specter", "Ghoul"],
-        MonsterType.FIEND: ["Demon", "Devil", "Imp", "Hellhound", "Fiend"],
-        MonsterType.CELESTIAL: ["Angel", "Archon", "Deva", "Pegasus"],
-        MonsterType.ABERRATION: ["Horror", "Beholder", "Mind Flayer", "Aboleth"],
-        MonsterType.BEAST: ["Bear", "Wolf", "Tiger", "Spider", "Serpent"],
-        MonsterType.CONSTRUCT: ["Golem", "Guardian", "Sentinel", "Automaton"],
-        MonsterType.ELEMENTAL: ["Elemental", "Mephit", "Salamander", "Djinni"],
-        MonsterType.FEY: ["Pixie", "Sprite", "Dryad", "Satyr", "Hag"],
-        MonsterType.GIANT: ["Giant", "Ogre", "Troll", "Ettin"],
-        MonsterType.HUMANOID: ["Orc", "Goblin", "Kobold", "Hobgoblin", "Gnoll"],
-        MonsterType.MONSTROSITY: [
-            "Chimera",
-            "Manticore",
-            "Griffon",
-            "Hydra",
-            "Basilisk",
-        ],
-        MonsterType.OOZE: ["Ooze", "Pudding", "Slime", "Jelly", "Cube"],
-        MonsterType.PLANT: ["Treant", "Shambler", "Vine", "Blight"],
-    }
-
-    prefix = random.choice(name_prefixes[monster_type])
-    suffix = random.choice(name_suffixes[monster_type])
+    prefix = random.choice(names_data["prefixes"].get(monster_type.value, ["Unknown"]))
+    suffix = random.choice(names_data["suffixes"].get(monster_type.value, ["Creature"]))
 
     return f"{prefix} {suffix}"
 

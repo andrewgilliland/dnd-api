@@ -1,0 +1,141 @@
+{
+  "class_traits": {
+    "Barbarian": ["fierce", "wild", "untamed", "savage", "primal"],
+    "Bard": ["charismatic", "eloquent", "artistic", "charming", "witty"],
+    "Cleric": ["devout", "faithful", "holy", "devoted", "righteous"],
+    "Druid": ["mystical", "nature-bound", "wise", "primal", "balanced"],
+    "Fighter": [
+      "disciplined",
+      "skilled",
+      "battle-hardened",
+      "tactical",
+      "brave"
+    ],
+    "Monk": ["disciplined", "serene", "focused", "spiritual", "meditative"],
+    "Paladin": ["noble", "honorable", "righteous", "sworn", "devoted"],
+    "Ranger": [
+      "skilled",
+      "wilderness-wise",
+      "tracking",
+      "solitary",
+      "keen-eyed"
+    ],
+    "Rogue": ["cunning", "stealthy", "quick-witted", "shadowy", "resourceful"],
+    "Sorcerer": [
+      "innately powerful",
+      "mysterious",
+      "chaotic",
+      "gifted",
+      "unpredictable"
+    ],
+    "Warlock": [
+      "pact-bound",
+      "mysterious",
+      "dark",
+      "enigmatic",
+      "otherworldly"
+    ],
+    "Wizard": ["scholarly", "studious", "arcane", "intellectual", "learned"]
+  },
+  "alignment_motivations": {
+    "Lawful Good": [
+      "protects the innocent",
+      "upholds justice",
+      "serves the greater good"
+    ],
+    "Neutral Good": [
+      "helps those in need",
+      "does what's right",
+      "brings hope to others"
+    ],
+    "Chaotic Good": [
+      "fights for freedom",
+      "rebels against tyranny",
+      "champions the oppressed"
+    ],
+    "Lawful Neutral": [
+      "follows a strict code",
+      "maintains order",
+      "upholds tradition"
+    ],
+    "True Neutral": ["seeks balance", "avoids extremes", "remains independent"],
+    "Chaotic Neutral": [
+      "follows their own path",
+      "values freedom above all",
+      "lives by their whims"
+    ],
+    "Lawful Evil": [
+      "ruthlessly pursues power",
+      "manipulates through law",
+      "dominates through order"
+    ],
+    "Neutral Evil": [
+      "serves only themselves",
+      "schemes for personal gain",
+      "exploits the weak"
+    ],
+    "Chaotic Evil": [
+      "spreads chaos and destruction",
+      "revels in cruelty",
+      "takes what they want"
+    ],
+    "Unaligned": [
+      "acts on instinct",
+      "follows no moral code",
+      "exists beyond morality"
+    ]
+  },
+  "race_backgrounds": {
+    "Human": [
+      "from a diverse background",
+      "adaptable to any situation",
+      "driven by ambition"
+    ],
+    "Elf": [
+      "with centuries of wisdom",
+      "connected to ancient magic",
+      "graceful and patient"
+    ],
+    "Dwarf": [
+      "with a proud clan heritage",
+      "master of craftsmanship",
+      "stubborn and loyal"
+    ],
+    "Halfling": [
+      "with a love for comfort and adventure",
+      "lucky beyond measure",
+      "curious about the world"
+    ],
+    "Dragonborn": [
+      "bearing the blood of dragons",
+      "seeking to honor their clan",
+      "proud and honorable"
+    ],
+    "Gnome": [
+      "with boundless curiosity",
+      "inventive and clever",
+      "forever optimistic"
+    ],
+    "Half-Elf": [
+      "caught between two worlds",
+      "versatile and adaptable",
+      "searching for belonging"
+    ],
+    "Half-Orc": [
+      "struggling against prejudice",
+      "proving their worth",
+      "fierce and determined"
+    ],
+    "Tiefling": [
+      "marked by infernal heritage",
+      "overcoming dark assumptions",
+      "resilient and resourceful"
+    ]
+  },
+  "description_templates": [
+    "{name} is a {trait} {race} {class} {background} who {motivation}.",
+    "A {trait} {class} {background}, {name} {motivation} wherever they go.",
+    "{name}, a {race} {class}, is known as a {trait} adventurer who {motivation}.",
+    "Born {background}, {name} became a {trait} {class} who {motivation}."
+  ]
+}

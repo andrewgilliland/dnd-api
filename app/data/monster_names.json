@@ -1,0 +1,34 @@
+{
+  "name_prefixes": {
+    "Dragon": ["Ancient", "Young", "Adult", "Elder", "Wyrm"],
+    "Undead": ["Cursed", "Haunted", "Restless", "Dread", "Fallen"],
+    "Fiend": ["Infernal", "Abyssal", "Hellish", "Burning", "Dark"],
+    "Celestial": ["Radiant", "Divine", "Holy", "Blessed", "Sacred"],
+    "Aberration": ["Twisted", "Corrupted", "Mind-Bending", "Eldritch", "Strange"],
+    "Beast": ["Wild", "Savage", "Primal", "Feral", "Great"],
+    "Construct": ["Animated", "Mechanical", "Arcane", "Stone", "Iron"],
+    "Elemental": ["Raging", "Primordial", "Pure", "Eternal", "Chaos"],
+    "Fey": ["Enchanted", "Twilight", "Mystical", "Trickster", "Wild"],
+    "Giant": ["Towering", "Mighty", "Hill", "Stone", "Frost"],
+    "Humanoid": ["Savage", "Tribal", "Raiding", "War", "Blood"],
+    "Monstrosity": ["Monstrous", "Hybrid", "Chimeric", "Cursed", "Mutant"],
+    "Ooze": ["Gelatinous", "Acidic", "Hungry", "Slithering", "Black"],
+    "Plant": ["Carnivorous", "Strangling", "Thorned", "Awakened", "Vine"]
+  },
+  "name_suffixes": {
+    "Dragon": ["Dragon", "Drake", "Wyrm", "Dragonling"],
+    "Undead": ["Wraith", "Zombie", "Skeleton", "Specter", "Ghoul"],
+    "Fiend": ["Demon", "Devil", "Imp", "Hellhound", "Fiend"],
+    "Celestial": ["Angel", "Archon", "Deva", "Pegasus"],
+    "Aberration": ["Horror", "Beholder", "Mind Flayer", "Aboleth"],
+    "Beast": ["Bear", "Wolf", "Tiger", "Spider", "Serpent"],
+    "Construct": ["Golem", "Guardian", "Sentinel", "Automaton"],
+    "Elemental": ["Elemental", "Mephit", "Salamander", "Djinni"],
+    "Fey": ["Pixie", "Sprite", "Dryad", "Satyr", "Hag"],
+    "Giant": ["Giant", "Ogre", "Troll", "Ettin"],
+    "Humanoid": ["Orc", "Goblin", "Kobold", "Hobgoblin", "Gnoll"],
+    "Monstrosity": ["Chimera", "Manticore", "Griffon", "Hydra", "Basilisk"],
+    "Ooze": ["Ooze", "Pudding", "Slime", "Jelly", "Cube"],
+    "Plant": ["Treant", "Shambler", "Vine", "Blight"]
+  }
+}
