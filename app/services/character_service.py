@@ -2,13 +2,8 @@
 
 import random
 from app.models import Character, Class, Race, Alignment, Stats
-
-
-def roll_ability_score() -> int:
-    """Roll 4d6, drop lowest die (standard D&D method)"""
-    rolls = [random.randint(1, 6) for _ in range(4)]
-    rolls.remove(min(rolls))
-    return sum(rolls)
+from app.services.data_loader import load_character_names, load_character_traits
+from app.utils import roll_ability_score
 
 
 def generate_random_stats() -> Stats:
@@ -25,101 +20,8 @@ def generate_random_stats() -> Stats:
 
 def generate_random_name(race: Race, class_: Class) -> str:
     """Generate a random character name based on race"""
-
-    first_names = {
-        Race.HUMAN: [
-            "Alric",
-            "Brianna",
-            "Connor",
-            "Diana",
-            "Erik",
-            "Fiona",
-            "Garrett",
-            "Helena",
-        ],
-        Race.ELF: [
-            "Aelrindel",
-            "Caelynn",
-            "Erevan",
-            "Faelyn",
-            "Galadriel",
-            "Silaqui",
-            "Theren",
-            "Valandil",
-        ],
-        Race.DWARF: [
-            "Baern",
-            "Dagnal",
-            "Eberk",
-            "Fargrim",
-            "Gimli",
-            "Thorin",
-            "Ulfgar",
-            "Vondal",
-        ],
-        Race.HALFLING: [
-            "Alton",
-            "Cora",
-            "Eldon",
-            "Lily",
-            "Merric",
-            "Portia",
-            "Rosco",
-            "Seraphina",
-        ],
-        Race.DRAGONBORN: [
-            "Arjhan",
-            "Balasar",
-            "Donaar",
-            "Ghesh",
-            "Heskan",
-            "Kriv",
-            "Medrash",
-            "Patrin",
-        ],
-        Race.GNOME: [
-            "Alston",
-            "Brocc",
-            "Dimble",
-            "Eldon",
-            "Fonkin",
-            "Gimble",
-            "Orryn",
-            "Roondar",
-        ],
-        Race.HALF_ELF: [
-            "Arlan",
-            "Celeste",
-            "Damien",
-            "Elara",
-            "Gareth",
-            "Lyra",
-            "Rowan",
-            "Selene",
-        ],
-        Race.HALF_ORC: [
-            "Dench",
-            "Feng",
-            "Gell",
-            "Holg",
-            "Imsh",
-            "Keth",
-            "Mhurren",
-            "Ront",
-        ],
-        Race.TIEFLING: [
-            "Akmenios",
-            "Damakos",
-            "Ekemon",
-            "Iados",
-            "Kairon",
-            "Leucis",
-            "Melech",
-            "Therai",
-        ],
-    }
-
-    return random.choice(first_names.get(race, ["Adventurer"]))
+    names_data = load_character_names()
+    return random.choice(names_data.get(race.value, ["Adventurer"]))
 
 
 def generate_random_description(
@@ -127,162 +29,31 @@ def generate_random_description(
 ) -> str:
     """Generate a character description using race, class, and alignment"""
 
-    # Character traits by class
-    class_traits = {
-        Class.BARBARIAN: ["fierce", "wild", "untamed", "savage", "primal"],
-        Class.BARD: ["charismatic", "eloquent", "artistic", "charming", "witty"],
-        Class.CLERIC: ["devout", "faithful", "holy", "devoted", "righteous"],
-        Class.DRUID: ["mystical", "nature-bound", "wise", "primal", "balanced"],
-        Class.FIGHTER: [
-            "disciplined",
-            "skilled",
-            "battle-hardened",
-            "tactical",
-            "brave",
-        ],
-        Class.MONK: ["disciplined", "serene", "focused", "spiritual", "meditative"],
-        Class.PALADIN: ["noble", "honorable", "righteous", "sworn", "devoted"],
-        Class.RANGER: [
-            "skilled",
-            "wilderness-wise",
-            "tracking",
-            "solitary",
-            "keen-eyed",
-        ],
-        Class.ROGUE: ["cunning", "stealthy", "quick-witted", "shadowy", "resourceful"],
-        Class.SORCERER: [
-            "innately powerful",
-            "mysterious",
-            "chaotic",
-            "gifted",
-            "unpredictable",
-        ],
-        Class.WARLOCK: [
-            "pact-bound",
-            "mysterious",
-            "dark",
-            "enigmatic",
-            "otherworldly",
-        ],
-        Class.WIZARD: ["scholarly", "studious", "arcane", "intellectual", "learned"],
-    }
+    traits_data = load_character_traits()
 
-    # Background motivations by alignment
-    alignment_motivations = {
-        Alignment.LAWFUL_GOOD: [
-            "protects the innocent",
-            "upholds justice",
-            "serves the greater good",
-        ],
-        Alignment.NEUTRAL_GOOD: [
-            "helps those in need",
-            "does what's right",
-            "brings hope to others",
-        ],
-        Alignment.CHAOTIC_GOOD: [
-            "fights for freedom",
-            "rebels against tyranny",
-            "champions the oppressed",
-        ],
-        Alignment.LAWFUL_NEUTRAL: [
-            "follows a strict code",
-            "maintains order",
-            "upholds tradition",
-        ],
-        Alignment.TRUE_NEUTRAL: [
-            "seeks balance",
-            "avoids extremes",
-            "remains independent",
-        ],
-        Alignment.CHAOTIC_NEUTRAL: [
-            "follows their own path",
-            "values freedom above all",
-            "lives by their whims",
-        ],
-        Alignment.LAWFUL_EVIL: [
-            "ruthlessly pursues power",
-            "manipulates through law",
-            "dominates through order",
-        ],
-        Alignment.NEUTRAL_EVIL: [
-            "serves only themselves",
-            "schemes for personal gain",
-            "exploits the weak",
-        ],
-        Alignment.CHAOTIC_EVIL: [
-            "spreads chaos and destruction",
-            "revels in cruelty",
-            "takes what they want",
-        ],
-        Alignment.UNALIGNED: [
-            "acts on instinct",
-            "follows no moral code",
-            "exists beyond morality",
-        ],
-    }
+    # Build the description using data from JSON
+    trait = random.choice(
+        traits_data["class_traits"].get(class_.value, ["adventurous"])
+    )
+    motivation = random.choice(
+        traits_data["alignment_motivations"].get(
+            alignment.value, ["seeks their destiny"]
+        )
+    )
+    background = random.choice(
+        traits_data["race_backgrounds"].get(race.value, ["from distant lands"])
+    )
 
-    # Race-specific background elements
-    race_backgrounds = {
-        Race.HUMAN: [
-            "from a diverse background",
-            "adaptable to any situation",
-            "driven by ambition",
-        ],
-        Race.ELF: [
-            "with centuries of wisdom",
-            "connected to ancient magic",
-            "graceful and patient",
-        ],
-        Race.DWARF: [
-            "with a proud clan heritage",
-            "master of craftsmanship",
-            "stubborn and loyal",
-        ],
-        Race.HALFLING: [
-            "with a love for comfort and adventure",
-            "lucky beyond measure",
-            "curious about the world",
-        ],
-        Race.DRAGONBORN: [
-            "bearing the blood of dragons",
-            "seeking to honor their clan",
-            "proud and honorable",
-        ],
-        Race.GNOME: [
-            "with boundless curiosity",
-            "inventive and clever",
-            "forever optimistic",
-        ],
-        Race.HALF_ELF: [
-            "caught between two worlds",
-            "versatile and adaptable",
-            "searching for belonging",
-        ],
-        Race.HALF_ORC: [
-            "struggling against prejudice",
-            "proving their worth",
-            "fierce and determined",
-        ],
-        Race.TIEFLING: [
-            "marked by infernal heritage",
-            "overcoming dark assumptions",
-            "resilient and resourceful",
-        ],
-    }
-
-    # Build the description
-    trait = random.choice(class_traits[class_])
-    motivation = random.choice(alignment_motivations[alignment])
-    background = random.choice(race_backgrounds[race])
-
-    templates = [
-        f"{name} is a {trait} {race.value} {class_.value} {background} who {motivation}.",
-        f"A {trait} {class_.value} {background}, {name} {motivation} wherever they go.",
-        f"{name}, a {race.value} {class_.value}, is known as a {trait} adventurer who {motivation}.",
-        f"Born {background}, {name} became a {trait} {class_.value} who {motivation}.",
-    ]
-
-    return random.choice(templates)
+    # Format the template
+    template = random.choice(traits_data["description_templates"])
+    return template.format(
+        name=name,
+        trait=trait,
+        race=race.value,
+        class_=class_.value,
+        background=background,
+        motivation=motivation,
+    ).replace("{class}", class_.value)
 
 
 def generate_random_character() -> Character:

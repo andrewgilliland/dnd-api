@@ -4,7 +4,7 @@ from app.models import CharactersResponse, Class, Race, Character
 from app.services.data_loader import load_characters
 from app.services.character_service import generate_random_character
 
-router = APIRouter(prefix="/characters", tags=["characters"])
+router = APIRouter()
 
 
 @router.get("", response_model=CharactersResponse)

@@ -4,7 +4,7 @@ from app.models import MonstersResponse, MonsterType, Size, Monster
 from app.services.data_loader import load_monsters
 from app.services.monster_service import generate_random_monster
 
-router = APIRouter(prefix="/monsters", tags=["monsters"])
+router = APIRouter()
 
 
 @router.get("", response_model=MonstersResponse)

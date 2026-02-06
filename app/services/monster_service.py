@@ -2,65 +2,17 @@
 
 import random
 from app.models import Monster, MonsterType, Size, Alignment, Stats, Action, DamageType
+from app.config.constants import XP_BY_CR
+from app.services.data_loader import load_monster_names
+from app.utils import calculate_hp_from_cr, calculate_ac_from_cr, get_xp_by_cr
 
 
 def generate_random_monster_name(monster_type: MonsterType) -> str:
     """Generate a random monster name based on type"""
+    names_data = load_monster_names()
 
-    name_prefixes = {
-        MonsterType.DRAGON: ["Ancient", "Young", "Adult", "Elder", "Wyrm"],
-        MonsterType.UNDEAD: ["Cursed", "Haunted", "Restless", "Dread", "Fallen"],
-        MonsterType.FIEND: ["Infernal", "Abyssal", "Hellish", "Burning", "Dark"],
-        MonsterType.CELESTIAL: ["Radiant", "Divine", "Holy", "Blessed", "Sacred"],
-        MonsterType.ABERRATION: [
-            "Twisted",
-            "Corrupted",
-            "Mind-Bending",
-            "Eldritch",
-            "Strange",
-        ],
-        MonsterType.BEAST: ["Wild", "Savage", "Primal", "Feral", "Great"],
-        MonsterType.CONSTRUCT: ["Animated", "Mechanical", "Arcane", "Stone", "Iron"],
-        MonsterType.ELEMENTAL: ["Raging", "Primordial", "Pure", "Eternal", "Chaos"],
-        MonsterType.FEY: ["Enchanted", "Twilight", "Mystical", "Trickster", "Wild"],
-        MonsterType.GIANT: ["Towering", "Mighty", "Hill", "Stone", "Frost"],
-        MonsterType.HUMANOID: ["Savage", "Tribal", "Raiding", "War", "Blood"],
-        MonsterType.MONSTROSITY: [
-            "Monstrous",
-            "Hybrid",
-            "Chimeric",
-            "Cursed",
-            "Mutant",
-        ],
-        MonsterType.OOZE: ["Gelatinous", "Acidic", "Hungry", "Slithering", "Black"],
-        MonsterType.PLANT: ["Carnivorous", "Strangling", "Thorned", "Awakened", "Vine"],
-    }
-
-    name_suffixes = {
-        MonsterType.DRAGON: ["Dragon", "Drake", "Wyrm", "Dragonling"],
-        MonsterType.UNDEAD: ["Wraith", "Zombie", "Skeleton", "Specter", "Ghoul"],
-        MonsterType.FIEND: ["Demon", "Devil", "Imp", "Hellhound", "Fiend"],
-        MonsterType.CELESTIAL: ["Angel", "Archon", "Deva", "Pegasus"],
-        MonsterType.ABERRATION: ["Horror", "Beholder", "Mind Flayer", "Aboleth"],
-        MonsterType.BEAST: ["Bear", "Wolf", "Tiger", "Spider", "Serpent"],
-        MonsterType.CONSTRUCT: ["Golem", "Guardian", "Sentinel", "Automaton"],
-        MonsterType.ELEMENTAL: ["Elemental", "Mephit", "Salamander", "Djinni"],
-        MonsterType.FEY: ["Pixie", "Sprite", "Dryad", "Satyr", "Hag"],
-        MonsterType.GIANT: ["Giant", "Ogre", "Troll", "Ettin"],
-        MonsterType.HUMANOID: ["Orc", "Goblin", "Kobold", "Hobgoblin", "Gnoll"],
-        MonsterType.MONSTROSITY: [
-            "Chimera",
-            "Manticore",
-            "Griffon",
-            "Hydra",
-            "Basilisk",
-        ],
-        MonsterType.OOZE: ["Ooze", "Pudding", "Slime", "Jelly", "Cube"],
-        MonsterType.PLANT: ["Treant", "Shambler", "Vine", "Blight"],
-    }
-
-    prefix = random.choice(name_prefixes[monster_type])
-    suffix = random.choice(name_suffixes[monster_type])
+    prefix = random.choice(names_data["prefixes"].get(monster_type.value, ["Unknown"]))
+    suffix = random.choice(names_data["suffixes"].get(monster_type.value, ["Creature"]))
 
     return f"{prefix} {suffix}"
 
@@ -79,67 +31,6 @@ def generate_random_monster_stats(challenge_rating: float) -> Stats:
         wisdom=base_stat + random.randint(-variation, variation),
         charisma=base_stat + random.randint(-variation, variation),
     )
-
-
-def calculate_hp_from_cr(challenge_rating: float, size: Size) -> tuple[int, str]:
-    """Calculate HP and hit dice based on CR and size"""
-
-    # Hit die by size
-    hit_dice_map = {
-        Size.TINY: 4,
-        Size.SMALL: 6,
-        Size.MEDIUM: 8,
-        Size.LARGE: 10,
-        Size.HUGE: 12,
-        Size.GARGANTUAN: 20,
-    }
-
-    die_size = hit_dice_map[size]
-    num_dice = max(1, int(challenge_rating * 3) + random.randint(1, 6))
-    constitution_bonus = int(challenge_rating)
-
-    # Calculate HP: (num_dice * (die_size / 2 + 0.5)) + (num_dice * con_bonus)
-    average_roll = (die_size / 2) + 0.5
-    hit_points = int((num_dice * average_roll) + (num_dice * constitution_bonus))
-    hit_dice = f"{num_dice}d{die_size}+{num_dice * constitution_bonus}"
-
-    return hit_points, hit_dice
-
-
-def calculate_ac_from_cr(challenge_rating: float) -> int:
-    """Calculate armor class based on challenge rating"""
-    return 10 + int(challenge_rating * 1.2) + random.randint(0, 3)
-
-
-def calculate_xp_from_cr(challenge_rating: float) -> int:
-    """Calculate XP reward based on challenge rating"""
-    xp_table = {
-        0: 10,
-        0.125: 25,
-        0.25: 50,
-        0.5: 100,
-        1: 200,
-        2: 450,
-        3: 700,
-        4: 1100,
-        5: 1800,
-        6: 2300,
-        7: 2900,
-        8: 3900,
-        9: 5000,
-        10: 5900,
-        11: 7200,
-        12: 8400,
-        13: 10000,
-        14: 11500,
-        15: 13000,
-        16: 15000,
-        17: 18000,
-        18: 20000,
-        19: 22000,
-        20: 25000,
-    }
-    return xp_table.get(challenge_rating, int(challenge_rating * 1000))
 
 
 def generate_special_abilities(
@@ -369,7 +260,7 @@ def generate_random_monster(
     stats = generate_random_monster_stats(challenge_rating)
     hit_points, hit_dice = calculate_hp_from_cr(challenge_rating, size)
     armor_class = calculate_ac_from_cr(challenge_rating)
-    experience_points = calculate_xp_from_cr(challenge_rating)
+    experience_points = XP_BY_CR.get(challenge_rating, int(challenge_rating * 1000))
     special_abilities = generate_special_abilities(monster_type, challenge_rating)
     actions = generate_monster_actions(monster_type, challenge_rating)
 

@@ -1,0 +1,92 @@
+{
+  "Human": [
+    "Alric",
+    "Brianna",
+    "Connor",
+    "Diana",
+    "Erik",
+    "Fiona",
+    "Garrett",
+    "Helena"
+  ],
+  "Elf": [
+    "Aelrindel",
+    "Caelynn",
+    "Erevan",
+    "Faelyn",
+    "Galadriel",
+    "Silaqui",
+    "Theren",
+    "Valandil"
+  ],
+  "Dwarf": [
+    "Baern",
+    "Dagnal",
+    "Eberk",
+    "Fargrim",
+    "Gimli",
+    "Thorin",
+    "Ulfgar",
+    "Vondal"
+  ],
+  "Halfling": [
+    "Alton",
+    "Cora",
+    "Eldon",
+    "Lily",
+    "Merric",
+    "Portia",
+    "Rosco",
+    "Seraphina"
+  ],
+  "Dragonborn": [
+    "Arjhan",
+    "Balasar",
+    "Donaar",
+    "Ghesh",
+    "Heskan",
+    "Kriv",
+    "Medrash",
+    "Patrin"
+  ],
+  "Gnome": [
+    "Alston",
+    "Brocc",
+    "Dimble",
+    "Eldon",
+    "Fonkin",
+    "Gimble",
+    "Orryn",
+    "Roondar"
+  ],
+  "Half-Elf": [
+    "Arlan",
+    "Celeste",
+    "Damien",
+    "Elara",
+    "Gareth",
+    "Lyra",
+    "Rowan",
+    "Selene"
+  ],
+  "Half-Orc": [
+    "Dench",
+    "Feng",
+    "Gell",
+    "Holg",
+    "Imsh",
+    "Keth",
+    "Mhurren",
+    "Ront"
+  ],
+  "Tiefling": [
+    "Akmenios",
+    "Damakos",
+    "Ekemon",
+    "Iados",
+    "Kairon",
+    "Leucis",
+    "Melech",
+    "Therai"
+  ]
+}

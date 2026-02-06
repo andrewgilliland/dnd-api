@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import characters, monsters, game_data, items
+from app.api.v1 import api_router as api_v1_router
 from app.config import settings
 
 app = FastAPI(
@@ -26,6 +26,8 @@ def root():
         "message": "Welcome to the D&D API",
         "environment": settings.environment,
         "version": settings.api_version,
+        "docs": "/docs",
+        "api_v1": "/api/v1",
     }
 
 
@@ -39,8 +41,5 @@ def health_check():
     }
 
 
-# Include routers
-app.include_router(characters.router)
-app.include_router(monsters.router)
-app.include_router(game_data.router)
-app.include_router(items.router)
+# Include API v1 router
+app.include_router(api_v1_router, prefix="/api/v1")

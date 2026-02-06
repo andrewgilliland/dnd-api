@@ -93,9 +93,3 @@ class Monster(BaseModel):
     actions: list[Action]
     legendary_actions: list[Action] | None = None
     reactions: list[Action] | None = None
-
-
-class MonstersResponse(BaseModel):
-    """Response model for multiple monsters"""
-
-    monsters: list[Monster]

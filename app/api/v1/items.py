@@ -3,7 +3,7 @@ from fastapi import APIRouter, Query, HTTPException
 from app.models import ItemsResponse, Item, ItemType, Rarity
 from app.services.data_loader import load_items
 
-router = APIRouter(prefix="/items", tags=["items"])
+router = APIRouter()
 
 
 @router.get("", response_model=ItemsResponse)

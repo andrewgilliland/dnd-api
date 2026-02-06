@@ -48,9 +48,3 @@ class Item(BaseModel):
 
     # Armor-specific fields
     armor_class: int | None = None
-
-
-class ItemsResponse(BaseModel):
-    """Response model for multiple items"""
-
-    items: list[Item]
