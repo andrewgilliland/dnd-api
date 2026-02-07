@@ -53,7 +53,7 @@ def generate_random_description(
         class_=class_.value,
         background=background,
         motivation=motivation,
-    ).replace("{class}", class_.value)
+    )
 
 
 def generate_random_character() -> Character:

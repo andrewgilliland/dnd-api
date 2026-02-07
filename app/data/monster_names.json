@@ -1,10 +1,16 @@
 {
-  "name_prefixes": {
+  "prefixes": {
     "Dragon": ["Ancient", "Young", "Adult", "Elder", "Wyrm"],
     "Undead": ["Cursed", "Haunted", "Restless", "Dread", "Fallen"],
     "Fiend": ["Infernal", "Abyssal", "Hellish", "Burning", "Dark"],
     "Celestial": ["Radiant", "Divine", "Holy", "Blessed", "Sacred"],
-    "Aberration": ["Twisted", "Corrupted", "Mind-Bending", "Eldritch", "Strange"],
+    "Aberration": [
+      "Twisted",
+      "Corrupted",
+      "Mind-Bending",
+      "Eldritch",
+      "Strange"
+    ],
     "Beast": ["Wild", "Savage", "Primal", "Feral", "Great"],
     "Construct": ["Animated", "Mechanical", "Arcane", "Stone", "Iron"],
     "Elemental": ["Raging", "Primordial", "Pure", "Eternal", "Chaos"],
@@ -15,7 +21,7 @@
     "Ooze": ["Gelatinous", "Acidic", "Hungry", "Slithering", "Black"],
     "Plant": ["Carnivorous", "Strangling", "Thorned", "Awakened", "Vine"]
   },
-  "name_suffixes": {
+  "suffixes": {
     "Dragon": ["Dragon", "Drake", "Wyrm", "Dragonling"],
     "Undead": ["Wraith", "Zombie", "Skeleton", "Specter", "Ghoul"],
     "Fiend": ["Demon", "Devil", "Imp", "Hellhound", "Fiend"],

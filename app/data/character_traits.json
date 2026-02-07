@@ -133,9 +133,9 @@
     ]
   },
   "description_templates": [
-    "{name} is a {trait} {race} {class} {background} who {motivation}.",
-    "A {trait} {class} {background}, {name} {motivation} wherever they go.",
-    "{name}, a {race} {class}, is known as a {trait} adventurer who {motivation}.",
-    "Born {background}, {name} became a {trait} {class} who {motivation}."
+    "{name} is a {trait} {race} {class_} {background} who {motivation}.",
+    "A {trait} {class_} {background}, {name} {motivation} wherever they go.",
+    "{name}, a {race} {class_}, is known as a {trait} adventurer who {motivation}.",
+    "Born {background}, {name} became a {trait} {class_} who {motivation}."
   ]
 }
