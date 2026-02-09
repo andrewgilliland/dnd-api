@@ -11,6 +11,10 @@ router = APIRouter()
 def get_items(
     search: CommonSearch,
     cost_range: CommonCostRange,
+    skip: int = Query(0, ge=0, description="Number of records to skip"),
+    limit: int = Query(
+        10, ge=1, le=100, description="Maximum number of records to return"
+    ),
     type: ItemType | None = Query(None, description="Filter by item type"),
     rarity: Rarity | None = Query(None, description="Filter by item rarity"),
     magic: bool | None = Query(None, description="Filter by magic items (true/false)"),
@@ -19,7 +23,7 @@ def get_items(
     ),
 ):
     """
-    Return all D&D items and equipment with optional filtering.
+    Return all D&D items and equipment with optional filtering and pagination.
 
     Filters:
     - type: Item type (e.g., Weapon, Armor, Potion, Wondrous Item)
@@ -29,6 +33,10 @@ def get_items(
     - min_cost: Minimum cost in gold pieces
     - max_cost: Maximum cost in gold pieces
     - name: Search by name (partial match, case-insensitive)
+
+    Pagination:
+    - skip: Number of records to skip (default: 0)
+    - limit: Maximum records to return (default: 10, max: 100)
     """
     items = load_items()
 
@@ -54,7 +62,18 @@ def get_items(
     if search.name:
         items = [i for i in items if search.name.lower() in i["name"].lower()]
 
-    return {"items": items}
+    # Get total count before pagination
+    total = len(items)
+
+    # Apply pagination
+    paginated_items = items[skip : skip + limit]
+
+    return {
+        "items": paginated_items,
+        "total": total,
+        "skip": skip,
+        "limit": limit,
+    }
 
 
 @router.get("/{item_id}", response_model=Item)

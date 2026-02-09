@@ -8,6 +8,9 @@ class CharactersResponse(BaseModel):
     """Response model for multiple characters"""
 
     characters: list[Character]
+    total: int
+    skip: int
+    limit: int
 
 
 class ClassResponse(BaseModel):

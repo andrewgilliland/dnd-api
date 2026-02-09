@@ -7,7 +7,12 @@ def test_get_characters(client):
     assert response.status_code == 200
     data = response.json()
     assert "characters" in data
+    assert "total" in data
+    assert "skip" in data
+    assert "limit" in data
     assert isinstance(data["characters"], list)
+    assert data["skip"] == 0
+    assert data["limit"] == 10
 
 
 def test_get_characters_filter_by_class(client):
@@ -16,6 +21,7 @@ def test_get_characters_filter_by_class(client):
     assert response.status_code == 200
     data = response.json()
     assert "characters" in data
+    assert "total" in data
     # All returned characters should be Wizards
     for char in data["characters"]:
         assert char["class"] == "Wizard"

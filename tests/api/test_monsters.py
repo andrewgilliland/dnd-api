@@ -7,7 +7,12 @@ def test_get_monsters(client):
     assert response.status_code == 200
     data = response.json()
     assert "monsters" in data
+    assert "total" in data
+    assert "skip" in data
+    assert "limit" in data
     assert isinstance(data["monsters"], list)
+    assert data["skip"] == 0
+    assert data["limit"] == 10
 
 
 def test_get_monsters_filter_by_type(client):
@@ -16,6 +21,7 @@ def test_get_monsters_filter_by_type(client):
     assert response.status_code == 200
     data = response.json()
     assert "monsters" in data
+    assert "total" in data
     for monster in data["monsters"]:
         assert monster["type"] == "Dragon"
 
