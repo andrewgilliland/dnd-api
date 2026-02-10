@@ -1,15 +1,15 @@
 """Application settings and environment configuration"""
 
-import os
 from functools import lru_cache
-from pydantic import BaseModel
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 
 
-class Settings(BaseModel):
+class Settings(BaseSettings):
     # Application Settings
     app_name: str = "D&D API"
-    environment: str = "dev"
-    debug: bool = True
+    environment: str = Field(default="dev")
+    debug: bool = Field(default=True)
 
     # API Settings
     api_version: str = "v1"
@@ -17,16 +17,9 @@ class Settings(BaseModel):
     # AWS Settings (for Lambda deployment)
     aws_region: str = "us-east-1"
 
-    class Config:
-        case_sensitive = False
-
-    def __init__(self, **kwargs):
-        # Override with environment variables
-        env = os.getenv("ENVIRONMENT", "dev")
-        print(f"Loading settings for environment: {env}")
-        debug = os.getenv("DEBUG", "true").lower() == "true"
-
-        super().__init__(environment=env, debug=debug, **kwargs)
+    model_config = SettingsConfigDict(
+        env_file=".env", env_ignore_empty=True, case_sensitive=False
+    )
 
 
 @lru_cache()

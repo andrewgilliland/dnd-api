@@ -12,11 +12,15 @@ router = APIRouter()
 def get_monsters(
     search: CommonSearch,
     cr_params: CommonChallengeRating,
+    skip: int = Query(0, ge=0, description="Number of records to skip"),
+    limit: int = Query(
+        10, ge=1, le=100, description="Maximum number of records to return"
+    ),
     type: MonsterType | None = Query(None, description="Filter by monster type"),
     size: Size | None = Query(None, description="Filter by monster size"),
 ):
     """
-    Return all D&D monsters with optional filtering.
+    Return all D&D monsters with optional filtering and pagination.
 
     Filters:
     - type: Monster type (e.g., Dragon, Beast, Humanoid)
@@ -24,6 +28,10 @@ def get_monsters(
     - min_cr: Minimum challenge rating
     - max_cr: Maximum challenge rating
     - name: Search by name (partial match, case-insensitive)
+
+    Pagination:
+    - skip: Number of records to skip (default: 0)
+    - limit: Maximum records to return (default: 10, max: 100)
     """
     monsters = load_monsters()
 
@@ -43,7 +51,18 @@ def get_monsters(
     if search.name:
         monsters = [m for m in monsters if search.name.lower() in m["name"].lower()]
 
-    return {"monsters": monsters}
+    # Get total count before pagination
+    total = len(monsters)
+
+    # Apply pagination
+    paginated_monsters = monsters[skip : skip + limit]
+
+    return {
+        "monsters": paginated_monsters,
+        "total": total,
+        "skip": skip,
+        "limit": limit,
+    }
 
 
 @router.get("/random", response_model=Monster)

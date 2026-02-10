@@ -8,3 +8,6 @@ class ItemsResponse(BaseModel):
     """Response model for multiple items"""
 
     items: list[Item]
+    total: int
+    skip: int
+    limit: int
