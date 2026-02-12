@@ -4,6 +4,18 @@ from .common import Alignment, Size, Stats
 from .character import Class, Race, Character
 from .monster import MonsterType, DamageType, Action, Monster
 from .item import ItemType, Rarity, Item
+from .combat import (
+    AdvantageType,
+    SavingThrowAbility,
+    AttackRollRequest,
+    AttackRollResponse,
+    DamageRollRequest,
+    DamageRollResponse,
+    SavingThrowRequest,
+    SavingThrowResponse,
+    CombatCalculatorRequest,
+    CombatCalculatorResponse,
+)
 from .responses import (
     CharactersResponse,
     ClassResponse,
@@ -30,6 +42,17 @@ __all__ = [
     "ItemType",
     "Rarity",
     "Item",
+    # Combat
+    "AdvantageType",
+    "SavingThrowAbility",
+    "AttackRollRequest",
+    "AttackRollResponse",
+    "DamageRollRequest",
+    "DamageRollResponse",
+    "SavingThrowRequest",
+    "SavingThrowResponse",
+    "CombatCalculatorRequest",
+    "CombatCalculatorResponse",
     # Responses
     "CharactersResponse",
     "ClassResponse",
