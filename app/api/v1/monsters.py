@@ -3,6 +3,7 @@ from fastapi import APIRouter, Query, HTTPException
 from app.models import MonstersResponse, MonsterType, Size, Monster
 from app.services.data_loader import load_monsters
 from app.services.monster_service import generate_random_monster
+from app.services.query_utils import filter_records, paginate_records
 from app.api.dependencies import CommonSearch, CommonChallengeRating
 
 router = APIRouter()
@@ -35,27 +36,25 @@ def get_monsters(
     """
     monsters = load_monsters()
 
-    # Apply filters
+    predicates = []
     if type:
-        monsters = [m for m in monsters if m["type"] == type.value]
-
+        predicates.append(lambda monster: monster["type"] == type.value)
     if size:
-        monsters = [m for m in monsters if m["size"] == size.value]
-
+        predicates.append(lambda monster: monster["size"] == size.value)
     if cr_params.min_cr is not None:
-        monsters = [m for m in monsters if m["challenge_rating"] >= cr_params.min_cr]
-
+        predicates.append(
+            lambda monster: monster["challenge_rating"] >= cr_params.min_cr
+        )
     if cr_params.max_cr is not None:
-        monsters = [m for m in monsters if m["challenge_rating"] <= cr_params.max_cr]
-
+        predicates.append(
+            lambda monster: monster["challenge_rating"] <= cr_params.max_cr
+        )
     if search.name:
-        monsters = [m for m in monsters if search.name.lower() in m["name"].lower()]
+        name_filter = search.name.lower()
+        predicates.append(lambda monster: name_filter in monster["name"].lower())
 
-    # Get total count before pagination
-    total = len(monsters)
-
-    # Apply pagination
-    paginated_monsters = monsters[skip : skip + limit]
+    filtered_monsters = filter_records(monsters, predicates)
+    paginated_monsters, total = paginate_records(filtered_monsters, skip, limit)
 
     return {
         "monsters": paginated_monsters,
