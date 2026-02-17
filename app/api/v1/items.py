@@ -2,6 +2,7 @@ from fastapi import APIRouter, Query, HTTPException
 
 from app.models import ItemsResponse, Item, ItemType, Rarity
 from app.services.data_loader import load_items
+from app.services.query_utils import filter_records, paginate_records
 from app.api.dependencies import CommonSearch, CommonCostRange
 
 router = APIRouter()
@@ -40,33 +41,27 @@ def get_items(
     """
     items = load_items()
 
-    # Apply filters
+    predicates = []
     if type:
-        items = [i for i in items if i["type"] == type.value]
-
+        predicates.append(lambda item: item["type"] == type.value)
     if rarity:
-        items = [i for i in items if i["rarity"] == rarity.value]
-
+        predicates.append(lambda item: item["rarity"] == rarity.value)
     if magic is not None:
-        items = [i for i in items if i["magic"] == magic]
-
+        predicates.append(lambda item: item["magic"] == magic)
     if attunement is not None:
-        items = [i for i in items if i["attunement_required"] == attunement]
-
+        predicates.append(
+            lambda item: item["attunement_required"] == attunement
+        )
     if cost_range.min_cost is not None:
-        items = [i for i in items if i["cost"] >= cost_range.min_cost]
-
+        predicates.append(lambda item: item["cost"] >= cost_range.min_cost)
     if cost_range.max_cost is not None:
-        items = [i for i in items if i["cost"] <= cost_range.max_cost]
-
+        predicates.append(lambda item: item["cost"] <= cost_range.max_cost)
     if search.name:
-        items = [i for i in items if search.name.lower() in i["name"].lower()]
+        name_filter = search.name.lower()
+        predicates.append(lambda item: name_filter in item["name"].lower())
 
-    # Get total count before pagination
-    total = len(items)
-
-    # Apply pagination
-    paginated_items = items[skip : skip + limit]
+    filtered_items = filter_records(items, predicates)
+    paginated_items, total = paginate_records(filtered_items, skip, limit)
 
     return {
         "items": paginated_items,

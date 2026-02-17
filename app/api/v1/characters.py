@@ -3,6 +3,7 @@ from fastapi import APIRouter, Query, HTTPException
 from app.models import CharactersResponse, Class, Race, Character
 from app.services.data_loader import load_characters
 from app.services.character_service import generate_random_character
+from app.services.query_utils import filter_records, paginate_records
 from app.api.dependencies import CommonSearch
 
 router = APIRouter()
@@ -32,21 +33,17 @@ def get_characters(
     """
     characters = load_characters()
 
-    # Apply filters
+    predicates = []
     if class_:
-        characters = [c for c in characters if c["class"] == class_.value]
-
+        predicates.append(lambda character: character["class"] == class_.value)
     if race:
-        characters = [c for c in characters if c["race"] == race.value]
-
+        predicates.append(lambda character: character["race"] == race.value)
     if search.name:
-        characters = [c for c in characters if search.name.lower() in c["name"].lower()]
+        name_filter = search.name.lower()
+        predicates.append(lambda character: name_filter in character["name"].lower())
 
-    # Get total count before pagination
-    total = len(characters)
-    
-    # Apply pagination
-    paginated_characters = characters[skip : skip + limit]
+    filtered_characters = filter_records(characters, predicates)
+    paginated_characters, total = paginate_records(filtered_characters, skip, limit)
 
     return {
         "characters": paginated_characters,
