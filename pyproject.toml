@@ -17,3 +17,11 @@ dependencies = [
 
 [tool.pytest.ini_options]
 pythonpath = "."
+testpaths = ["tests"]
+norecursedirs = [
+    "cdk.out",
+    "cdk/cdk.out",
+    ".venv",
+    "build",
+    "dist",
+]
