@@ -17,6 +17,11 @@ class Settings(BaseSettings):
     # AWS Settings (for Lambda deployment)
     aws_region: str = "us-east-1"
 
+    # CORS Settings
+    cors_allowed_origins: str = Field(
+        default="http://localhost:5173,http://127.0.0.1:5173"
+    )
+
     model_config = SettingsConfigDict(
         env_file=".env", env_ignore_empty=True, case_sensitive=False
     )
@@ -31,3 +36,13 @@ def get_settings() -> Settings:
     - DEBUG: true, false
     """
     return Settings()
+
+
+def get_cors_origins() -> list[str]:
+    """Get CORS origins from settings as a cleaned list."""
+    settings = get_settings()
+    return [
+        origin.strip()
+        for origin in settings.cors_allowed_origins.split(",")
+        if origin.strip()
+    ]

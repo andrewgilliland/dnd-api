@@ -191,5 +191,1027 @@
         "damage_type": "Slashing"
       }
     ]
+  },
+  {
+    "id": 5,
+    "name": "Lich",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Lawful Evil",
+    "armor_class": 17,
+    "hit_points": 135,
+    "hit_dice": "18d8+54",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 11,
+      "dexterity": 16,
+      "constitution": 16,
+      "intelligence": 20,
+      "wisdom": 14,
+      "charisma": 16
+    },
+    "saving_throws": {
+      "constitution": 10,
+      "intelligence": 12,
+      "wisdom": 9
+    },
+    "skills": { "arcana": 18, "history": 12, "insight": 9, "perception": 9 },
+    "damage_resistances": ["Cold", "Lightning", "Necrotic"],
+    "damage_immunities": ["Poison"],
+    "condition_immunities": [
+      "charmed",
+      "exhaustion",
+      "frightened",
+      "paralyzed",
+      "poisoned"
+    ],
+    "senses": { "truesight": 120, "passive_perception": 19 },
+    "languages": ["Common", "Draconic", "Infernal"],
+    "challenge_rating": 21.0,
+    "experience_points": 33000,
+    "special_abilities": [
+      {
+        "name": "Legendary Resistance",
+        "description": "If the lich fails a saving throw, it can choose to succeed instead (3/Day)."
+      },
+      {
+        "name": "Rejuvenation",
+        "description": "If it has a phylactery, a destroyed lich gains a new body in 1d10 days."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Paralyzing Touch",
+        "description": "Melee Spell Attack: +12 to hit, reach 5 ft., one creature.",
+        "attack_bonus": 12,
+        "damage_dice": "3d6",
+        "damage_type": "Cold"
+      },
+      {
+        "name": "Disrupt Life",
+        "description": "Each non-undead creature within 20 feet must make a Constitution saving throw, taking necrotic damage on a failed save.",
+        "damage_dice": "6d6",
+        "damage_type": "Necrotic"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Frost Giant",
+    "size": "Huge",
+    "type": "Giant",
+    "alignment": "Neutral Evil",
+    "armor_class": 15,
+    "hit_points": 138,
+    "hit_dice": "12d12+60",
+    "speed": { "walk": 40 },
+    "stats": {
+      "strength": 23,
+      "dexterity": 9,
+      "constitution": 21,
+      "intelligence": 9,
+      "wisdom": 10,
+      "charisma": 12
+    },
+    "saving_throws": { "constitution": 8, "wisdom": 3 },
+    "skills": { "athletics": 9, "perception": 3 },
+    "damage_immunities": ["Cold"],
+    "senses": { "passive_perception": 13 },
+    "languages": ["Common", "Giant"],
+    "challenge_rating": 8.0,
+    "experience_points": 3900,
+    "special_abilities": [
+      {
+        "name": "Ice Walker",
+        "description": "The giant can move across icy surfaces without needing to make an ability check."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Greataxe",
+        "description": "Melee Weapon Attack: +9 to hit, reach 10 ft., one target.",
+        "attack_bonus": 9,
+        "damage_dice": "3d12+6",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Rock",
+        "description": "Ranged Weapon Attack: +9 to hit, range 60/240 ft., one target.",
+        "attack_bonus": 9,
+        "damage_dice": "4d10+6",
+        "damage_type": "Bludgeoning"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Mind Flayer",
+    "size": "Medium",
+    "type": "Aberration",
+    "alignment": "Lawful Evil",
+    "armor_class": 15,
+    "hit_points": 71,
+    "hit_dice": "13d8+13",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 11,
+      "dexterity": 12,
+      "constitution": 12,
+      "intelligence": 19,
+      "wisdom": 17,
+      "charisma": 17
+    },
+    "saving_throws": { "intelligence": 7, "wisdom": 6, "charisma": 6 },
+    "skills": {
+      "arcana": 7,
+      "deception": 6,
+      "insight": 6,
+      "perception": 6,
+      "stealth": 4
+    },
+    "senses": { "darkvision": 120, "passive_perception": 16 },
+    "languages": ["Deep Speech", "Undercommon"],
+    "challenge_rating": 7.0,
+    "experience_points": 2900,
+    "special_abilities": [
+      {
+        "name": "Magic Resistance",
+        "description": "The mind flayer has advantage on saving throws against spells and other magical effects."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Tentacles",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature.",
+        "attack_bonus": 7,
+        "damage_dice": "2d10+4",
+        "damage_type": "Psychic"
+      },
+      {
+        "name": "Extract Brain",
+        "description": "Melee Weapon Attack against an incapacitated humanoid grappled by the mind flayer.",
+        "attack_bonus": 7,
+        "damage_dice": "10d10",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Treant",
+    "size": "Huge",
+    "type": "Plant",
+    "alignment": "Chaotic Good",
+    "armor_class": 16,
+    "hit_points": 138,
+    "hit_dice": "12d12+60",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 23,
+      "dexterity": 8,
+      "constitution": 21,
+      "intelligence": 12,
+      "wisdom": 16,
+      "charisma": 12
+    },
+    "skills": { "perception": 6 },
+    "damage_resistances": ["Bludgeoning", "Piercing"],
+    "senses": { "passive_perception": 16 },
+    "languages": ["Common", "Druidic", "Elvish"],
+    "challenge_rating": 9.0,
+    "experience_points": 5000,
+    "special_abilities": [
+      {
+        "name": "False Appearance",
+        "description": "While motionless, the treant is indistinguishable from a normal tree."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Slam",
+        "description": "Melee Weapon Attack: +10 to hit, reach 5 ft., one target.",
+        "attack_bonus": 10,
+        "damage_dice": "3d6+6",
+        "damage_type": "Bludgeoning"
+      },
+      {
+        "name": "Rock",
+        "description": "Ranged Weapon Attack: +10 to hit, range 60/180 ft., one target.",
+        "attack_bonus": 10,
+        "damage_dice": "4d10+6",
+        "damage_type": "Bludgeoning"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Skeleton",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Lawful Evil",
+    "armor_class": 13,
+    "hit_points": 13,
+    "hit_dice": "2d8+4",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 10,
+      "dexterity": 14,
+      "constitution": 15,
+      "intelligence": 6,
+      "wisdom": 8,
+      "charisma": 5
+    },
+    "damage_vulnerabilities": ["Bludgeoning"],
+    "damage_immunities": ["Poison"],
+    "condition_immunities": ["exhaustion", "poisoned"],
+    "senses": { "darkvision": 60, "passive_perception": 9 },
+    "languages": ["Understands all languages it knew in life but can't speak"],
+    "challenge_rating": 0.25,
+    "experience_points": 50,
+    "special_abilities": [
+      {
+        "name": "Undead Nature",
+        "description": "A skeleton doesn't require air, food, drink, or sleep."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Shortsword",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d6+2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Shortbow",
+        "description": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d6+2",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Bandit",
+    "size": "Medium",
+    "type": "Humanoid",
+    "alignment": "Chaotic Neutral",
+    "armor_class": 12,
+    "hit_points": 11,
+    "hit_dice": "2d8+2",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 11,
+      "dexterity": 12,
+      "constitution": 12,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 10
+    },
+    "skills": { "athletics": 1 },
+    "senses": { "passive_perception": 10 },
+    "languages": ["Common"],
+    "challenge_rating": 0.125,
+    "experience_points": 25,
+    "special_abilities": [
+      {
+        "name": "Pack Tactics",
+        "description": "The bandit has advantage on an attack roll against a creature if at least one of the bandit's allies is within 5 feet of the creature."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Scimitar",
+        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target.",
+        "attack_bonus": 3,
+        "damage_dice": "1d6+1",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Light Crossbow",
+        "description": "Ranged Weapon Attack: +3 to hit, range 80/320 ft., one target.",
+        "attack_bonus": 3,
+        "damage_dice": "1d8+1",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Kobold",
+    "size": "Small",
+    "type": "Humanoid",
+    "alignment": "Lawful Evil",
+    "armor_class": 12,
+    "hit_points": 5,
+    "hit_dice": "2d6-2",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 7,
+      "dexterity": 15,
+      "constitution": 9,
+      "intelligence": 8,
+      "wisdom": 7,
+      "charisma": 8
+    },
+    "senses": { "darkvision": 60, "passive_perception": 8 },
+    "languages": ["Common", "Draconic"],
+    "challenge_rating": 0.125,
+    "experience_points": 25,
+    "special_abilities": [
+      {
+        "name": "Sunlight Sensitivity",
+        "description": "While in sunlight, the kobold has disadvantage on attack rolls and on Wisdom (Perception) checks that rely on sight."
+      },
+      {
+        "name": "Pack Tactics",
+        "description": "The kobold has advantage on an attack roll against a creature if at least one of the kobold's allies is within 5 feet of the creature."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Dagger",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d4+2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Sling",
+        "description": "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d4+2",
+        "damage_type": "Bludgeoning"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Rat",
+    "size": "Tiny",
+    "type": "Beast",
+    "alignment": "Unaligned",
+    "armor_class": 10,
+    "hit_points": 1,
+    "hit_dice": "1d4-1",
+    "speed": { "walk": 20 },
+    "stats": {
+      "strength": 2,
+      "dexterity": 11,
+      "constitution": 9,
+      "intelligence": 2,
+      "wisdom": 10,
+      "charisma": 4
+    },
+    "senses": { "darkvision": 30, "passive_perception": 10 },
+    "languages": [],
+    "challenge_rating": 0.0,
+    "experience_points": 10,
+    "special_abilities": [
+      {
+        "name": "Keen Smell",
+        "description": "The rat has advantage on Wisdom (Perception) checks that rely on smell."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +0 to hit, reach 5 ft., one target.",
+        "attack_bonus": 0,
+        "damage_dice": "1d1",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Commoner",
+    "size": "Medium",
+    "type": "Humanoid",
+    "alignment": "True Neutral",
+    "armor_class": 10,
+    "hit_points": 4,
+    "hit_dice": "1d8",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 10,
+      "dexterity": 10,
+      "constitution": 10,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 10
+    },
+    "senses": { "passive_perception": 10 },
+    "languages": ["Common"],
+    "challenge_rating": 0.0,
+    "experience_points": 10,
+    "special_abilities": [
+      {
+        "name": "Civilian",
+        "description": "The commoner has no special combat training and avoids direct conflict."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Club",
+        "description": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target.",
+        "attack_bonus": 2,
+        "damage_dice": "1d4",
+        "damage_type": "Bludgeoning"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Orc",
+    "size": "Medium",
+    "type": "Humanoid",
+    "alignment": "Chaotic Evil",
+    "armor_class": 13,
+    "hit_points": 15,
+    "hit_dice": "2d8+6",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 16,
+      "dexterity": 12,
+      "constitution": 16,
+      "intelligence": 7,
+      "wisdom": 11,
+      "charisma": 10
+    },
+    "skills": { "intimidation": 2 },
+    "senses": { "darkvision": 60, "passive_perception": 10 },
+    "languages": ["Common", "Orc"],
+    "challenge_rating": 0.5,
+    "experience_points": 100,
+    "special_abilities": [
+      {
+        "name": "Aggressive",
+        "description": "As a bonus action, the orc can move up to its speed toward a hostile creature it can see."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Greataxe",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target.",
+        "attack_bonus": 5,
+        "damage_dice": "1d12+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Javelin",
+        "description": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target.",
+        "attack_bonus": 5,
+        "damage_dice": "1d6+3",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Wolf",
+    "size": "Medium",
+    "type": "Beast",
+    "alignment": "Unaligned",
+    "armor_class": 13,
+    "hit_points": 11,
+    "hit_dice": "2d8+2",
+    "speed": { "walk": 40 },
+    "stats": {
+      "strength": 12,
+      "dexterity": 15,
+      "constitution": 12,
+      "intelligence": 3,
+      "wisdom": 12,
+      "charisma": 6
+    },
+    "skills": { "perception": 3, "stealth": 4 },
+    "senses": { "passive_perception": 13 },
+    "languages": [],
+    "challenge_rating": 0.25,
+    "experience_points": 50,
+    "special_abilities": [
+      {
+        "name": "Keen Hearing and Smell",
+        "description": "The wolf has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+      },
+      {
+        "name": "Pack Tactics",
+        "description": "The wolf has advantage on an attack roll against a creature if at least one of the wolf's allies is within 5 feet of the creature."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "2d4+2",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Ghoul",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Chaotic Evil",
+    "armor_class": 12,
+    "hit_points": 22,
+    "hit_dice": "5d8",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 13,
+      "dexterity": 15,
+      "constitution": 10,
+      "intelligence": 7,
+      "wisdom": 10,
+      "charisma": 6
+    },
+    "damage_immunities": ["Poison"],
+    "condition_immunities": ["charmed", "exhaustion", "poisoned"],
+    "senses": { "darkvision": 60, "passive_perception": 10 },
+    "languages": ["Common"],
+    "challenge_rating": 1.0,
+    "experience_points": 200,
+    "special_abilities": [
+      {
+        "name": "Turning Defiance",
+        "description": "The ghoul has advantage on saving throws against effects that turn undead."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +2 to hit, reach 5 ft., one creature.",
+        "attack_bonus": 2,
+        "damage_dice": "2d6+2",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Claws",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "2d4+2",
+        "damage_type": "Slashing"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Bandit Captain",
+    "size": "Medium",
+    "type": "Humanoid",
+    "alignment": "Chaotic Neutral",
+    "armor_class": 15,
+    "hit_points": 65,
+    "hit_dice": "10d8+20",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 15,
+      "dexterity": 16,
+      "constitution": 14,
+      "intelligence": 14,
+      "wisdom": 11,
+      "charisma": 14
+    },
+    "saving_throws": { "strength": 4, "dexterity": 5, "wisdom": 2 },
+    "skills": { "athletics": 4, "deception": 4 },
+    "senses": { "passive_perception": 10 },
+    "languages": ["Common"],
+    "challenge_rating": 2.0,
+    "experience_points": 450,
+    "special_abilities": [
+      {
+        "name": "Parry",
+        "description": "The bandit captain adds 2 to its AC against one melee attack that would hit it."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Scimitar",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target.",
+        "attack_bonus": 5,
+        "damage_dice": "1d6+3",
+        "damage_type": "Slashing"
+      },
+      {
+        "name": "Dagger",
+        "description": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target.",
+        "attack_bonus": 5,
+        "damage_dice": "1d4+3",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Zombie",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Neutral Evil",
+    "armor_class": 8,
+    "hit_points": 22,
+    "hit_dice": "3d8+9",
+    "speed": { "walk": 20 },
+    "stats": {
+      "strength": 13,
+      "dexterity": 6,
+      "constitution": 16,
+      "intelligence": 3,
+      "wisdom": 6,
+      "charisma": 5
+    },
+    "saving_throws": { "wisdom": 0 },
+    "damage_immunities": ["Poison"],
+    "condition_immunities": ["poisoned"],
+    "senses": { "darkvision": 60, "passive_perception": 8 },
+    "languages": ["Understands all languages it knew in life but can't speak"],
+    "challenge_rating": 0.25,
+    "experience_points": 50,
+    "special_abilities": [
+      {
+        "name": "Undead Fortitude",
+        "description": "If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw; on a success, it drops to 1 hit point instead."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Slam",
+        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target.",
+        "attack_bonus": 3,
+        "damage_dice": "1d6+1",
+        "damage_type": "Bludgeoning"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Wight",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Neutral Evil",
+    "armor_class": 14,
+    "hit_points": 45,
+    "hit_dice": "6d8+18",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 15,
+      "dexterity": 14,
+      "constitution": 16,
+      "intelligence": 10,
+      "wisdom": 13,
+      "charisma": 15
+    },
+    "saving_throws": { "constitution": 5, "wisdom": 3 },
+    "skills": { "perception": 3, "stealth": 4 },
+    "damage_resistances": ["Necrotic"],
+    "damage_immunities": ["Poison"],
+    "condition_immunities": ["exhaustion", "poisoned"],
+    "senses": { "darkvision": 60, "passive_perception": 13 },
+    "languages": ["Common"],
+    "challenge_rating": 3.0,
+    "experience_points": 700,
+    "special_abilities": [
+      {
+        "name": "Sunlight Sensitivity",
+        "description": "While in sunlight, the wight has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Life Drain",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature.",
+        "attack_bonus": 4,
+        "damage_dice": "1d6+2",
+        "damage_type": "Necrotic"
+      },
+      {
+        "name": "Longbow",
+        "description": "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d8+2",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Specter",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Chaotic Evil",
+    "armor_class": 12,
+    "hit_points": 22,
+    "hit_dice": "5d8",
+    "speed": { "walk": 0, "fly": 50 },
+    "stats": {
+      "strength": 1,
+      "dexterity": 14,
+      "constitution": 11,
+      "intelligence": 10,
+      "wisdom": 10,
+      "charisma": 11
+    },
+    "damage_resistances": [
+      "Acid",
+      "Cold",
+      "Fire",
+      "Lightning",
+      "Thunder",
+      "Bludgeoning",
+      "Piercing",
+      "Slashing"
+    ],
+    "damage_immunities": ["Necrotic", "Poison"],
+    "condition_immunities": [
+      "charmed",
+      "exhaustion",
+      "grappled",
+      "paralyzed",
+      "petrified",
+      "poisoned",
+      "prone",
+      "restrained",
+      "unconscious"
+    ],
+    "senses": { "darkvision": 60, "passive_perception": 10 },
+    "languages": ["Understands all languages it knew in life but can't speak"],
+    "challenge_rating": 1.0,
+    "experience_points": 200,
+    "special_abilities": [
+      {
+        "name": "Incorporeal Movement",
+        "description": "The specter can move through other creatures and objects as if they were difficult terrain."
+      },
+      {
+        "name": "Sunlight Sensitivity",
+        "description": "While in sunlight, the specter has disadvantage on attack rolls and ability checks."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Life Drain",
+        "description": "Melee Spell Attack: +4 to hit, reach 5 ft., one creature.",
+        "attack_bonus": 4,
+        "damage_dice": "3d6",
+        "damage_type": "Necrotic"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Necromancer Acolyte",
+    "size": "Medium",
+    "type": "Undead",
+    "alignment": "Neutral Evil",
+    "armor_class": 12,
+    "hit_points": 27,
+    "hit_dice": "6d8",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 9,
+      "dexterity": 12,
+      "constitution": 10,
+      "intelligence": 15,
+      "wisdom": 12,
+      "charisma": 11
+    },
+    "saving_throws": { "intelligence": 4, "wisdom": 3 },
+    "skills": { "arcana": 4, "religion": 4 },
+    "damage_immunities": ["Poison"],
+    "condition_immunities": ["poisoned"],
+    "senses": { "darkvision": 60, "passive_perception": 11 },
+    "languages": ["Common", "Infernal"],
+    "challenge_rating": 2.0,
+    "experience_points": 450,
+    "special_abilities": [
+      {
+        "name": "Dark Ritualist",
+        "description": "The acolyte has advantage on checks to maintain concentration on necromancy effects."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Chill Bolt",
+        "description": "Ranged Spell Attack: +4 to hit, range 60 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "2d8",
+        "damage_type": "Necrotic"
+      },
+      {
+        "name": "Bone Dagger",
+        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target.",
+        "attack_bonus": 3,
+        "damage_dice": "1d4+1",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Kobold Dragonshield",
+    "size": "Small",
+    "type": "Humanoid",
+    "alignment": "Lawful Evil",
+    "armor_class": 15,
+    "hit_points": 44,
+    "hit_dice": "8d6+16",
+    "speed": { "walk": 30 },
+    "stats": {
+      "strength": 13,
+      "dexterity": 15,
+      "constitution": 14,
+      "intelligence": 8,
+      "wisdom": 9,
+      "charisma": 10
+    },
+    "skills": { "perception": 2 },
+    "senses": { "darkvision": 60, "passive_perception": 12 },
+    "languages": ["Common", "Draconic"],
+    "challenge_rating": 1.0,
+    "experience_points": 200,
+    "special_abilities": [
+      {
+        "name": "Pack Tactics",
+        "description": "The dragonshield has advantage on an attack roll against a creature if at least one of the dragonshield's allies is within 5 feet of the creature."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Spear",
+        "description": "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one target.",
+        "attack_bonus": 4,
+        "damage_dice": "1d6+2",
+        "damage_type": "Piercing"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Young White Dragon",
+    "size": "Large",
+    "type": "Dragon",
+    "alignment": "Chaotic Evil",
+    "armor_class": 17,
+    "hit_points": 133,
+    "hit_dice": "14d10+56",
+    "speed": { "walk": 40, "burrow": 20, "fly": 80, "swim": 40 },
+    "stats": {
+      "strength": 18,
+      "dexterity": 10,
+      "constitution": 18,
+      "intelligence": 6,
+      "wisdom": 11,
+      "charisma": 12
+    },
+    "saving_throws": {
+      "dexterity": 4,
+      "constitution": 8,
+      "wisdom": 4,
+      "charisma": 5
+    },
+    "skills": { "perception": 7, "stealth": 4 },
+    "damage_immunities": ["Cold"],
+    "senses": { "blindsight": 30, "darkvision": 120, "passive_perception": 17 },
+    "languages": ["Common", "Draconic"],
+    "challenge_rating": 6.0,
+    "experience_points": 2300,
+    "special_abilities": [
+      {
+        "name": "Ice Walk",
+        "description": "The dragon can move across and climb icy surfaces without needing to make an ability check."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +7 to hit, reach 10 ft., one target.",
+        "attack_bonus": 7,
+        "damage_dice": "2d10+4",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Cold Breath",
+        "description": "The dragon exhales an icy blast in a 30-foot cone.",
+        "damage_dice": "10d8",
+        "damage_type": "Cold"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Young Blue Dragon",
+    "size": "Large",
+    "type": "Dragon",
+    "alignment": "Lawful Evil",
+    "armor_class": 18,
+    "hit_points": 152,
+    "hit_dice": "16d10+64",
+    "speed": { "walk": 40, "burrow": 20, "fly": 80 },
+    "stats": {
+      "strength": 21,
+      "dexterity": 10,
+      "constitution": 19,
+      "intelligence": 14,
+      "wisdom": 13,
+      "charisma": 17
+    },
+    "saving_throws": {
+      "dexterity": 4,
+      "constitution": 8,
+      "wisdom": 5,
+      "charisma": 7
+    },
+    "skills": { "perception": 9, "stealth": 4 },
+    "damage_immunities": ["Lightning"],
+    "senses": { "blindsight": 30, "darkvision": 120, "passive_perception": 19 },
+    "languages": ["Common", "Draconic"],
+    "challenge_rating": 9.0,
+    "experience_points": 5000,
+    "special_abilities": [
+      {
+        "name": "Desert Camouflage",
+        "description": "The dragon has advantage on Dexterity (Stealth) checks made to hide in rocky desert terrain."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +8 to hit, reach 10 ft., one target.",
+        "attack_bonus": 8,
+        "damage_dice": "2d10+5",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Lightning Breath",
+        "description": "The dragon exhales lightning in a 60-foot line that is 5 feet wide.",
+        "damage_dice": "10d10",
+        "damage_type": "Lightning"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Ancient Green Dragon",
+    "size": "Gargantuan",
+    "type": "Dragon",
+    "alignment": "Lawful Evil",
+    "armor_class": 21,
+    "hit_points": 385,
+    "hit_dice": "22d20+154",
+    "speed": { "walk": 40, "fly": 80, "swim": 40 },
+    "stats": {
+      "strength": 27,
+      "dexterity": 12,
+      "constitution": 25,
+      "intelligence": 20,
+      "wisdom": 17,
+      "charisma": 19
+    },
+    "saving_throws": {
+      "dexterity": 8,
+      "constitution": 14,
+      "wisdom": 10,
+      "charisma": 11
+    },
+    "skills": {
+      "deception": 11,
+      "insight": 10,
+      "perception": 17,
+      "stealth": 8
+    },
+    "damage_immunities": ["Poison"],
+    "condition_immunities": ["poisoned"],
+    "senses": { "blindsight": 60, "darkvision": 120, "passive_perception": 27 },
+    "languages": ["Common", "Draconic"],
+    "challenge_rating": 22.0,
+    "experience_points": 41000,
+    "special_abilities": [
+      {
+        "name": "Legendary Resistance",
+        "description": "If the dragon fails a saving throw, it can choose to succeed instead (3/Day)."
+      },
+      {
+        "name": "Amphibious",
+        "description": "The dragon can breathe air and water."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Bite",
+        "description": "Melee Weapon Attack: +15 to hit, reach 15 ft., one target.",
+        "attack_bonus": 15,
+        "damage_dice": "2d10+8",
+        "damage_type": "Piercing"
+      },
+      {
+        "name": "Poison Breath",
+        "description": "The dragon exhales poisonous gas in a 90-foot cone.",
+        "damage_dice": "26d6",
+        "damage_type": "Poison"
+      }
+    ]
   }
 ]
