@@ -15,7 +15,8 @@ This directory contains the AWS CDK infrastructure code to deploy the D&D API to
 
    ```bash
    cd cdk
-   pip install -r requirements.txt
+   uv venv
+   uv pip install -r requirements.txt
    ```
 
 2. **Configure AWS credentials** (if not already done):
@@ -26,7 +27,7 @@ This directory contains the AWS CDK infrastructure code to deploy the D&D API to
 
 3. **Bootstrap CDK** (one-time per account/region):
    ```bash
-   cdk bootstrap
+   uv run cdk bootstrap
    ```
 
 ## Deployment Commands
@@ -35,31 +36,31 @@ This directory contains the AWS CDK infrastructure code to deploy the D&D API to
 
 ```bash
 cd cdk
-cdk deploy --context environment=dev
+uv run cdk deploy --context environment=dev
 ```
 
 ### Deploy to Staging
 
 ```bash
 cd cdk
-cdk deploy --context environment=staging
+uv run cdk deploy --context environment=staging
 ```
 
 ### Deploy to Production
 
 ```bash
 cd cdk
-cdk deploy --context environment=prod
+uv run cdk deploy --context environment=prod
 ```
 
 ## Useful CDK Commands
 
-- `cdk ls` - List all stacks in the app
-- `cdk synth` - Synthesize CloudFormation template
-- `cdk diff` - Compare deployed stack with current state
-- `cdk deploy` - Deploy stack to AWS
-- `cdk destroy` - Remove stack from AWS
-- `cdk watch` - Watch for changes and auto-deploy (dev mode)
+- `uv run cdk ls` - List all stacks in the app
+- `uv run cdk synth` - Synthesize CloudFormation template
+- `uv run cdk diff` - Compare deployed stack with current state
+- `uv run cdk deploy` - Deploy stack to AWS
+- `uv run cdk destroy` - Remove stack from AWS
+- `uv run cdk watch` - Watch for changes and auto-deploy (dev mode)
 
 ## Stack Resources
 
@@ -132,14 +133,14 @@ To remove all resources:
 
 ```bash
 cd cdk
-cdk destroy --context environment=dev
+uv run cdk destroy --context environment=dev
 ```
 
 ## Development Workflow
 
 1. Make changes to your API code
 2. Test locally: `uv run uvicorn app.main:app --reload`
-3. Deploy to dev: `cd cdk && cdk deploy --context environment=dev`
+3. Deploy to dev: `cd cdk && uv run cdk deploy --context environment=dev`
 4. Test deployed API
 5. Deploy to prod when ready
 
