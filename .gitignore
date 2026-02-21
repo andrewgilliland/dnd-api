@@ -12,7 +12,3 @@ wheels/
 .env
 
 /package
-
-# SAM
-.aws-sam/
-samconfig.toml

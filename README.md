@@ -16,7 +16,6 @@ A FastAPI application for D&D 5e game data with character, monster, and item man
 
 - Python 3.12 or higher
 - AWS CLI configured with credentials
-- AWS SAM CLI
 - Docker (optional, for containerized builds)
 
 ## Local Development
@@ -68,92 +67,21 @@ uv run uvicorn app.main:app --reload
 - `GET /api/v1/classes` - List all character classes
 - `GET /api/v1/races` - List all character races
 
-## AWS Lambda Deployment
+## AWS Deployment (CDK)
 
-This project supports two environments: **staging** and **prod**.
+This project uses AWS CDK for Lambda + API Gateway deployment.
 
-### Environments
-
-- **Staging**: Deploys automatically on push to `staging` branch → Lambda: `dnd-api-staging`
-- **Production**: Deploys automatically on push to `main` branch (requires PR approval) → Lambda: `dnd-api-prod`
-
-### Manual Deployment
-
-#### Build
-
-Build the application for Lambda deployment:
+Quick start:
 
 ```bash
-sam build
+cd cdk
+uv venv
+uv pip install -r requirements.txt
+uv run cdk bootstrap
+uv run cdk deploy --context environment=dev
 ```
 
-Or use Docker for consistent builds (recommended if you have a different Python version):
-
-```bash
-sam build --use-container
-```
-
-#### Deploy to Specific Environment
-
-Deploy to **staging**:
-
-```bash
-sam deploy --config-env staging
-```
-
-Deploy to **prod**:
-
-```bash
-sam deploy --config-env prod
-```
-
-First time deployment (guided mode):
-
-```bash
-sam deploy --guided --config-env staging
-```
-
-### GitHub Actions Setup
-
-The project uses GitHub Actions for CI/CD:
-
-1. **Tests** run on every push and PR to `staging` and `main`
-2. **Deployments** are automatic:
-   - `staging` branch → deploys to staging environment
-   - `main` branch → deploys to production (requires PR approval)
-
-#### Required GitHub Configuration
-
-1. Go to **Settings** → **Environments** in your GitHub repo
-2. Create two environments: `staging`, `production`
-3. For `production` environment:
-   - Enable **Required reviewers** (add team members who should approve)
-   - Optionally add **Wait timer** for additional safety
-4. Add `AWS_ROLE_ARN` secret at the repository level
-
-### View Logs
-
-Check CloudWatch logs for your Lambda functions:
-
-```bash
-# Staging environment
-sam logs -n dnd-api-staging --stack-name DndApiStack-staging --tail
-
-# Production environment
-sam logs -n dnd-api-prod --stack-name DndApiStack-prod --tail
-```
-
-### Delete Stack
-
-Remove AWS resources for a specific environment:
-
-```bash
-# Delete staging
-sam delete --stack-name DndApiStack-staging
-
-# Delete production
-sam delete --stack-name DndApiStack-prod
-```
+For full deployment documentation (staging/prod, useful commands, cleanup), see [cdk/README.md](cdk/README.md).
 
 ## Project Structure
 
@@ -203,29 +131,34 @@ dnd-api/
 │       ├── character_traits.json
 │       └── monster_names.json
 ├── tests/                   # Test files
-├── .aws-sam/                # SAM build artifacts (gitignored)
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml       # CI/CD pipeline
+│       └── tests.yml        # CI test pipeline
+├── cdk/                     # AWS CDK infrastructure
 ├── .env
 ├── .gitignore
 ├── pyproject.toml           # Python dependencies
 ├── requirements.txt         # Lambda deployment dependencies
 ├── README.md
-├── samconfig.toml           # SAM configuration
-└── template.yaml            # AWS SAM template
+└── uv.lock
 ```
 
 ## Environment Variables
 
-Set any required environment variables in `template.yaml` under `Globals.Function.Environment`.
+Configure infrastructure environment variables in [cdk/stacks/dnd_api_stack.py](cdk/stacks/dnd_api_stack.py).
 
 ## API Documentation
 
-Once deployed, find your API Gateway URL in the SAM deploy output or CloudFormation console. The interactive API documentation is available at:
+Current deployed API base URL:
 
 ```
-https://<api-gateway-url>/Prod/docs
+https://653gdarhyg.execute-api.us-east-2.amazonaws.com/
+```
+
+Interactive API documentation:
+
+```
+https://653gdarhyg.execute-api.us-east-2.amazonaws.com/docs
 ```
 
 [Anatomy of a Scalable Python Project (FastAPI)](https://www.youtube.com/watch?v=Af6Zr0tNNdE)
