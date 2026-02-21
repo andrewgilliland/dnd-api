@@ -149,10 +149,16 @@ Configure infrastructure environment variables in [cdk/stacks/dnd_api_stack.py](
 
 ## API Documentation
 
-Once deployed, find your API Gateway URL in CDK stack outputs or CloudFormation console. The interactive API documentation is available at:
+Current deployed API base URL:
 
 ```
-https://<api-gateway-url>/Prod/docs
+https://653gdarhyg.execute-api.us-east-2.amazonaws.com/
+```
+
+Interactive API documentation:
+
+```
+https://653gdarhyg.execute-api.us-east-2.amazonaws.com/docs
 ```
 
 [Anatomy of a Scalable Python Project (FastAPI)](https://www.youtube.com/watch?v=Af6Zr0tNNdE)
