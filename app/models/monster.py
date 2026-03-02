@@ -48,6 +48,7 @@ class Action(BaseModel):
 
     name: str
     description: str
+    action_cost: int | None = None
     attack_bonus: int | None = None
     damage_dice: str | None = None  # e.g., "2d6+4"
     damage_type: DamageType | None = None
@@ -64,6 +65,7 @@ class Monster(BaseModel):
 
     # Defense
     armor_class: int
+    armor_description: str | None = None
     hit_points: int
     hit_dice: str  # e.g., "8d10+16"
 
@@ -87,6 +89,7 @@ class Monster(BaseModel):
     # Combat Rating
     challenge_rating: float  # 0, 0.125, 0.25, 0.5, 1, 2, etc.
     experience_points: int
+    proficiency_bonus: int | None = None
 
     # Special Abilities
     special_abilities: list[Action] | None = None

@@ -4,7 +4,11 @@ import random
 from app.models import Monster, MonsterType, Size, Alignment, Stats, Action, DamageType
 from app.config.constants import XP_BY_CR
 from app.services.data_loader import load_monster_names
-from app.utils import calculate_hp_from_cr, calculate_ac_from_cr, get_xp_by_cr
+from app.utils import (
+    calculate_hp_from_cr,
+    calculate_ac_from_cr,
+    calculate_proficiency_bonus,
+)
 
 
 def generate_random_monster_name(monster_type: MonsterType) -> str:
@@ -254,6 +258,7 @@ def generate_random_monster(
     cr_options = [0, 0.125, 0.25, 0.5] + list(range(1, 21))
     valid_crs = [cr for cr in cr_options if min_cr <= cr <= max_cr]
     challenge_rating = random.choice(valid_crs if valid_crs else [1])
+    proficiency_bonus = calculate_proficiency_bonus(max(1, int(challenge_rating)))
 
     alignment = random.choice(list(Alignment))
     name = generate_random_monster_name(monster_type)
@@ -289,5 +294,6 @@ def generate_random_monster(
         challenge_rating=challenge_rating,
         special_abilities=special_abilities,
         experience_points=experience_points,
+        proficiency_bonus=proficiency_bonus,
         actions=actions,
     )
