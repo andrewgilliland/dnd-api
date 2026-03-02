@@ -6,6 +6,7 @@
     "class": "Ranger",
     "alignment": "Neutral Good",
     "description": "Leader of the Heroes of the Lance, struggling with his dual heritage",
+    "level": 7,
     "stats": {
       "strength": 15,
       "dexterity": 14,
@@ -13,7 +14,76 @@
       "intelligence": 13,
       "wisdom": 16,
       "charisma": 15
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 2,
+    "armor_class": 14,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 57, "max": 57 },
+    "saving_throws": {
+      "strength": 5,
+      "dexterity": 5,
+      "constitution": 2,
+      "intelligence": 1,
+      "wisdom": 3,
+      "charisma": 2
+    },
+    "saving_throw_proficiencies": ["strength", "dexterity"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 2, "proficient": false },
+      { "skill": "animal_handling", "bonus": 3, "proficient": false },
+      { "skill": "arcana", "bonus": 1, "proficient": false },
+      { "skill": "athletics", "bonus": 5, "proficient": true },
+      { "skill": "deception", "bonus": 2, "proficient": false },
+      { "skill": "history", "bonus": 1, "proficient": false },
+      { "skill": "insight", "bonus": 6, "proficient": true },
+      { "skill": "intimidation", "bonus": 2, "proficient": false },
+      { "skill": "investigation", "bonus": 1, "proficient": false },
+      { "skill": "medicine", "bonus": 3, "proficient": false },
+      { "skill": "nature", "bonus": 4, "proficient": true },
+      { "skill": "perception", "bonus": 6, "proficient": true },
+      { "skill": "performance", "bonus": 2, "proficient": false },
+      { "skill": "persuasion", "bonus": 5, "proficient": true },
+      { "skill": "religion", "bonus": 1, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 2, "proficient": false },
+      { "skill": "stealth", "bonus": 5, "proficient": true },
+      { "skill": "survival", "bonus": 6, "proficient": true }
+    ],
+    "passive_scores": {
+      "passive_perception": 16,
+      "passive_investigation": 11,
+      "passive_insight": 16
+    },
+    "senses": { "darkvision": 60 },
+    "defenses": ["Magical Sleep"],
+    "condition_immunities": ["charmed"],
+    "proficiencies": {
+      "armor": ["Light Armor", "Medium Armor", "Shields"],
+      "weapons": [
+        "Longswords",
+        "Shortswords",
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "languages": ["Common", "Elvish", "Sylvan"]
+    },
+    "actions": [
+      {
+        "name": "Longsword",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 2) slashing damage.",
+        "attack_bonus": 5,
+        "damage": "1d8+2",
+        "range": "5 ft."
+      },
+      {
+        "name": "Longbow",
+        "description": "Ranged Weapon Attack: +5 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
+        "attack_bonus": 5,
+        "damage": "1d8+2",
+        "range": "150/600 ft."
+      }
+    ]
   },
   {
     "id": 2,
@@ -22,6 +92,7 @@
     "class": "Wizard",
     "alignment": "Neutral Evil",
     "description": "Ambitious mage with hourglass eyes and golden skin, Master of Past and Present",
+    "level": 7,
     "stats": {
       "strength": 8,
       "dexterity": 10,
@@ -29,7 +100,82 @@
       "intelligence": 18,
       "wisdom": 16,
       "charisma": 10
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 0,
+    "armor_class": 13,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 28, "max": 28 },
+    "saving_throws": {
+      "strength": -1,
+      "dexterity": 0,
+      "constitution": 0,
+      "intelligence": 7,
+      "wisdom": 6,
+      "charisma": 0
+    },
+    "saving_throw_proficiencies": ["intelligence", "wisdom"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 0, "proficient": false },
+      { "skill": "animal_handling", "bonus": 3, "proficient": false },
+      { "skill": "arcana", "bonus": 7, "proficient": true },
+      { "skill": "athletics", "bonus": -1, "proficient": false },
+      { "skill": "deception", "bonus": 0, "proficient": false },
+      { "skill": "history", "bonus": 7, "proficient": true },
+      { "skill": "insight", "bonus": 6, "proficient": true },
+      { "skill": "intimidation", "bonus": 0, "proficient": false },
+      { "skill": "investigation", "bonus": 7, "proficient": true },
+      { "skill": "medicine", "bonus": 3, "proficient": false },
+      { "skill": "nature", "bonus": 4, "proficient": false },
+      { "skill": "perception", "bonus": 3, "proficient": false },
+      { "skill": "performance", "bonus": 0, "proficient": false },
+      { "skill": "persuasion", "bonus": 0, "proficient": false },
+      { "skill": "religion", "bonus": 7, "proficient": true },
+      { "skill": "sleight_of_hand", "bonus": 0, "proficient": false },
+      { "skill": "stealth", "bonus": 0, "proficient": false },
+      { "skill": "survival", "bonus": 3, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 13,
+      "passive_investigation": 17,
+      "passive_insight": 16
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": [],
+      "weapons": [
+        "Daggers",
+        "Darts",
+        "Light Crossbows",
+        "Quarterstaffs",
+        "Slings"
+      ],
+      "tools": [],
+      "languages": ["Common", "Draconic", "Elvish"]
+    },
+    "actions": [
+      {
+        "name": "Fire Bolt",
+        "description": "Ranged Spell Attack: +7 to hit, range 120 ft., one target. Hit: 11 (2d10) fire damage.",
+        "attack_bonus": 7,
+        "damage": "2d10",
+        "range": "120 ft."
+      },
+      {
+        "name": "Ray of Frost",
+        "description": "Ranged Spell Attack: +7 to hit, range 60 ft., one target. Hit: 9 (2d8) cold damage and the target's speed is reduced by 10 ft. until the start of your next turn.",
+        "attack_bonus": 7,
+        "damage": "2d8",
+        "range": "60 ft."
+      },
+      {
+        "name": "Quarterstaff",
+        "description": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d6 - 1) bludgeoning damage.",
+        "attack_bonus": 2,
+        "damage": "1d6-1",
+        "range": "5 ft."
+      }
+    ]
   },
   {
     "id": 3,
@@ -38,6 +184,7 @@
     "class": "Fighter",
     "alignment": "Neutral Good",
     "description": "Raistlin's twin brother, strong and loyal warrior",
+    "level": 7,
     "stats": {
       "strength": 18,
       "dexterity": 14,
@@ -45,7 +192,69 @@
       "intelligence": 10,
       "wisdom": 12,
       "charisma": 14
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 2,
+    "armor_class": 18,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 66, "max": 66 },
+    "saving_throws": {
+      "strength": 7,
+      "dexterity": 2,
+      "constitution": 6,
+      "intelligence": 0,
+      "wisdom": 1,
+      "charisma": 2
+    },
+    "saving_throw_proficiencies": ["strength", "constitution"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 2, "proficient": false },
+      { "skill": "animal_handling", "bonus": 1, "proficient": false },
+      { "skill": "arcana", "bonus": 0, "proficient": false },
+      { "skill": "athletics", "bonus": 7, "proficient": true },
+      { "skill": "deception", "bonus": 2, "proficient": false },
+      { "skill": "history", "bonus": 0, "proficient": false },
+      { "skill": "insight", "bonus": 1, "proficient": false },
+      { "skill": "intimidation", "bonus": 5, "proficient": true },
+      { "skill": "investigation", "bonus": 0, "proficient": false },
+      { "skill": "medicine", "bonus": 1, "proficient": false },
+      { "skill": "nature", "bonus": 0, "proficient": false },
+      { "skill": "perception", "bonus": 4, "proficient": true },
+      { "skill": "performance", "bonus": 2, "proficient": false },
+      { "skill": "persuasion", "bonus": 5, "proficient": true },
+      { "skill": "religion", "bonus": 0, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 2, "proficient": false },
+      { "skill": "stealth", "bonus": 2, "proficient": false },
+      { "skill": "survival", "bonus": 4, "proficient": true }
+    ],
+    "passive_scores": {
+      "passive_perception": 14,
+      "passive_investigation": 10,
+      "passive_insight": 11
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": ["Martial Weapons", "Simple Weapons"],
+      "tools": ["Dice Set"],
+      "languages": ["Common"]
+    },
+    "actions": [
+      {
+        "name": "Longsword",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 12 (1d8 + 4) slashing damage.",
+        "attack_bonus": 7,
+        "damage": "1d8+4",
+        "range": "5 ft."
+      },
+      {
+        "name": "Shield Bash",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 6 (1d4 + 4) bludgeoning damage and the target must succeed on a DC 15 Strength saving throw or be knocked prone.",
+        "attack_bonus": 7,
+        "damage": "1d4+4",
+        "range": "5 ft."
+      }
+    ]
   },
   {
     "id": 4,
@@ -54,6 +263,7 @@
     "class": "Fighter",
     "alignment": "Lawful Good",
     "description": "Noble Knight of Solamnia, dedicated to the Oath and the Measure",
+    "level": 7,
     "stats": {
       "strength": 17,
       "dexterity": 12,
@@ -61,7 +271,69 @@
       "intelligence": 12,
       "wisdom": 14,
       "charisma": 16
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 1,
+    "armor_class": 18,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 58, "max": 58 },
+    "saving_throws": {
+      "strength": 6,
+      "dexterity": 1,
+      "constitution": 5,
+      "intelligence": 1,
+      "wisdom": 2,
+      "charisma": 3
+    },
+    "saving_throw_proficiencies": ["strength", "constitution"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 1, "proficient": false },
+      { "skill": "animal_handling", "bonus": 2, "proficient": false },
+      { "skill": "arcana", "bonus": 1, "proficient": false },
+      { "skill": "athletics", "bonus": 6, "proficient": true },
+      { "skill": "deception", "bonus": 3, "proficient": false },
+      { "skill": "history", "bonus": 4, "proficient": true },
+      { "skill": "insight", "bonus": 5, "proficient": true },
+      { "skill": "intimidation", "bonus": 6, "proficient": true },
+      { "skill": "investigation", "bonus": 1, "proficient": false },
+      { "skill": "medicine", "bonus": 2, "proficient": false },
+      { "skill": "nature", "bonus": 1, "proficient": false },
+      { "skill": "perception", "bonus": 2, "proficient": false },
+      { "skill": "performance", "bonus": 3, "proficient": false },
+      { "skill": "persuasion", "bonus": 6, "proficient": true },
+      { "skill": "religion", "bonus": 4, "proficient": true },
+      { "skill": "sleight_of_hand", "bonus": 1, "proficient": false },
+      { "skill": "stealth", "bonus": 1, "proficient": false },
+      { "skill": "survival", "bonus": 2, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 12,
+      "passive_investigation": 11,
+      "passive_insight": 15
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": ["Martial Weapons", "Simple Weapons"],
+      "tools": [],
+      "languages": ["Common", "Solamnic"]
+    },
+    "actions": [
+      {
+        "name": "Zweihander (Two-Handed Sword)",
+        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage.",
+        "attack_bonus": 6,
+        "damage": "2d6+3",
+        "range": "5 ft."
+      },
+      {
+        "name": "Shield Bash",
+        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 5 (1d4 + 3) bludgeoning damage and the target must succeed on a DC 14 Strength saving throw or be knocked prone.",
+        "attack_bonus": 6,
+        "damage": "1d4+3",
+        "range": "5 ft."
+      }
+    ]
   },
   {
     "id": 5,
@@ -70,6 +342,7 @@
     "class": "Rogue",
     "alignment": "Neutral Good",
     "description": "Curious and fearless kender with a talent for 'finding' things",
+    "level": 6,
     "stats": {
       "strength": 10,
       "dexterity": 18,
@@ -77,7 +350,71 @@
       "intelligence": 13,
       "wisdom": 8,
       "charisma": 14
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 4,
+    "armor_class": 14,
+    "speed": { "walk": 25 },
+    "hit_points": { "current": 36, "max": 36 },
+    "saving_throws": {
+      "strength": 0,
+      "dexterity": 7,
+      "constitution": 1,
+      "intelligence": 4,
+      "wisdom": -1,
+      "charisma": 2
+    },
+    "saving_throw_proficiencies": ["dexterity", "intelligence"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 7, "proficient": true },
+      { "skill": "animal_handling", "bonus": -1, "proficient": false },
+      { "skill": "arcana", "bonus": 1, "proficient": false },
+      { "skill": "athletics", "bonus": 0, "proficient": false },
+      { "skill": "deception", "bonus": 5, "proficient": true },
+      { "skill": "history", "bonus": 1, "proficient": false },
+      { "skill": "insight", "bonus": -1, "proficient": false },
+      { "skill": "intimidation", "bonus": 2, "proficient": false },
+      { "skill": "investigation", "bonus": 4, "proficient": true },
+      { "skill": "medicine", "bonus": -1, "proficient": false },
+      { "skill": "nature", "bonus": 1, "proficient": false },
+      { "skill": "perception", "bonus": 2, "proficient": true },
+      { "skill": "performance", "bonus": 2, "proficient": false },
+      { "skill": "persuasion", "bonus": 5, "proficient": true },
+      { "skill": "religion", "bonus": 1, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 10, "proficient": true },
+      { "skill": "stealth", "bonus": 10, "proficient": true },
+      { "skill": "survival", "bonus": -1, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 12,
+      "passive_investigation": 14,
+      "passive_insight": 9
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Light Armor"],
+      "weapons": ["Hand Crossbows", "Longswords", "Rapiers", "Shortswords"],
+      "tools": ["Thieves' Tools"],
+      "languages": ["Common", "Halfling"]
+    },
+    "actions": [
+      {
+        "name": "Shortsword",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 8 (1d6 + 4) piercing damage plus 10 (3d6) sneak attack damage if advantage or an ally is adjacent to the target.",
+        "attack_bonus": 7,
+        "damage": "1d6+4",
+        "range": "5 ft.",
+        "notes": "+ 3d6 Sneak Attack"
+      },
+      {
+        "name": "Shortbow",
+        "description": "Ranged Weapon Attack: +7 to hit, range 80/320 ft., one target. Hit: 8 (1d6 + 4) piercing damage plus 10 (3d6) sneak attack damage.",
+        "attack_bonus": 7,
+        "damage": "1d6+4",
+        "range": "80/320 ft.",
+        "notes": "+ 3d6 Sneak Attack"
+      }
+    ]
   },
   {
     "id": 6,
@@ -86,6 +423,7 @@
     "class": "Fighter",
     "alignment": "Neutral Good",
     "description": "Grumpy but kind-hearted dwarven weaponsmith",
+    "level": 6,
     "stats": {
       "strength": 16,
       "dexterity": 11,
@@ -93,7 +431,76 @@
       "intelligence": 11,
       "wisdom": 13,
       "charisma": 10
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 0,
+    "armor_class": 16,
+    "speed": { "walk": 25 },
+    "hit_points": { "current": 55, "max": 55 },
+    "saving_throws": {
+      "strength": 6,
+      "dexterity": 0,
+      "constitution": 6,
+      "intelligence": 0,
+      "wisdom": 1,
+      "charisma": 0
+    },
+    "saving_throw_proficiencies": ["strength", "constitution"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 0, "proficient": false },
+      { "skill": "animal_handling", "bonus": 1, "proficient": false },
+      { "skill": "arcana", "bonus": 0, "proficient": false },
+      { "skill": "athletics", "bonus": 6, "proficient": true },
+      { "skill": "deception", "bonus": 0, "proficient": false },
+      { "skill": "history", "bonus": 3, "proficient": true },
+      { "skill": "insight", "bonus": 4, "proficient": true },
+      { "skill": "intimidation", "bonus": 0, "proficient": false },
+      { "skill": "investigation", "bonus": 0, "proficient": false },
+      { "skill": "medicine", "bonus": 1, "proficient": false },
+      { "skill": "nature", "bonus": 0, "proficient": false },
+      { "skill": "perception", "bonus": 4, "proficient": true },
+      { "skill": "performance", "bonus": 0, "proficient": false },
+      { "skill": "persuasion", "bonus": 0, "proficient": false },
+      { "skill": "religion", "bonus": 0, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 0, "proficient": false },
+      { "skill": "stealth", "bonus": 0, "proficient": false },
+      { "skill": "survival", "bonus": 4, "proficient": true }
+    ],
+    "passive_scores": {
+      "passive_perception": 14,
+      "passive_investigation": 10,
+      "passive_insight": 14
+    },
+    "senses": { "darkvision": 60 },
+    "defenses": ["Poison Resistance"],
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": [
+        "Battleaxes",
+        "Handaxes",
+        "Martial Weapons",
+        "Simple Weapons",
+        "Warhammers"
+      ],
+      "tools": ["Smith's Tools"],
+      "languages": ["Common", "Dwarvish"]
+    },
+    "actions": [
+      {
+        "name": "Battleaxe",
+        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (1d8 + 3) slashing damage.",
+        "attack_bonus": 6,
+        "damage": "1d8+3",
+        "range": "5 ft."
+      },
+      {
+        "name": "Handaxe",
+        "description": "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 9 (1d6 + 3) slashing damage.",
+        "attack_bonus": 6,
+        "damage": "1d6+3",
+        "range": "5 ft. / 20/60 ft."
+      }
+    ]
   },
   {
     "id": 7,
@@ -102,6 +509,7 @@
     "class": "Cleric",
     "alignment": "Lawful Good",
     "description": "Chieftain's daughter and first true cleric of Mishakal in centuries",
+    "level": 7,
     "stats": {
       "strength": 12,
       "dexterity": 13,
@@ -109,7 +517,68 @@
       "intelligence": 13,
       "wisdom": 18,
       "charisma": 16
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 1,
+    "armor_class": 18,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 49, "max": 49 },
+    "saving_throws": {
+      "strength": 1,
+      "dexterity": 1,
+      "constitution": 2,
+      "intelligence": 1,
+      "wisdom": 7,
+      "charisma": 6
+    },
+    "saving_throw_proficiencies": ["wisdom", "charisma"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 1, "proficient": false },
+      { "skill": "animal_handling", "bonus": 7, "proficient": true },
+      { "skill": "arcana", "bonus": 1, "proficient": false },
+      { "skill": "athletics", "bonus": 1, "proficient": false },
+      { "skill": "deception", "bonus": 3, "proficient": false },
+      { "skill": "history", "bonus": 4, "proficient": true },
+      { "skill": "insight", "bonus": 7, "proficient": true },
+      { "skill": "intimidation", "bonus": 3, "proficient": false },
+      { "skill": "investigation", "bonus": 1, "proficient": false },
+      { "skill": "medicine", "bonus": 7, "proficient": true },
+      { "skill": "nature", "bonus": 1, "proficient": false },
+      { "skill": "perception", "bonus": 4, "proficient": false },
+      { "skill": "performance", "bonus": 3, "proficient": false },
+      { "skill": "persuasion", "bonus": 6, "proficient": true },
+      { "skill": "religion", "bonus": 4, "proficient": true },
+      { "skill": "sleight_of_hand", "bonus": 1, "proficient": false },
+      { "skill": "stealth", "bonus": 1, "proficient": false },
+      { "skill": "survival", "bonus": 4, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 14,
+      "passive_investigation": 11,
+      "passive_insight": 17
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": ["Simple Weapons"],
+      "tools": [],
+      "languages": ["Common", "Celestial"]
+    },
+    "actions": [
+      {
+        "name": "Sacred Flame",
+        "description": "Spell Attack: target must succeed on a DC 15 Dexterity saving throw or take 14 (4d6) radiant damage. No cover benefit.",
+        "damage": "4d6",
+        "range": "60 ft."
+      },
+      {
+        "name": "Mace",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) bludgeoning damage.",
+        "attack_bonus": 4,
+        "damage": "1d6+1",
+        "range": "5 ft."
+      }
+    ]
   },
   {
     "id": 8,
@@ -118,6 +587,7 @@
     "class": "Ranger",
     "alignment": "Lawful Good",
     "description": "Plainsman warrior and Goldmoon's devoted husband",
+    "level": 7,
     "stats": {
       "strength": 17,
       "dexterity": 15,
@@ -125,7 +595,74 @@
       "intelligence": 11,
       "wisdom": 14,
       "charisma": 12
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 2,
+    "armor_class": 14,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 64, "max": 64 },
+    "saving_throws": {
+      "strength": 6,
+      "dexterity": 5,
+      "constitution": 3,
+      "intelligence": 0,
+      "wisdom": 2,
+      "charisma": 1
+    },
+    "saving_throw_proficiencies": ["strength", "dexterity"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 2, "proficient": false },
+      { "skill": "animal_handling", "bonus": 5, "proficient": true },
+      { "skill": "arcana", "bonus": 0, "proficient": false },
+      { "skill": "athletics", "bonus": 6, "proficient": true },
+      { "skill": "deception", "bonus": 1, "proficient": false },
+      { "skill": "history", "bonus": 0, "proficient": false },
+      { "skill": "insight", "bonus": 2, "proficient": false },
+      { "skill": "intimidation", "bonus": 1, "proficient": false },
+      { "skill": "investigation", "bonus": 0, "proficient": false },
+      { "skill": "medicine", "bonus": 2, "proficient": false },
+      { "skill": "nature", "bonus": 3, "proficient": true },
+      { "skill": "perception", "bonus": 5, "proficient": true },
+      { "skill": "performance", "bonus": 1, "proficient": false },
+      { "skill": "persuasion", "bonus": 1, "proficient": false },
+      { "skill": "religion", "bonus": 0, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 2, "proficient": false },
+      { "skill": "stealth", "bonus": 5, "proficient": true },
+      { "skill": "survival", "bonus": 5, "proficient": true }
+    ],
+    "passive_scores": {
+      "passive_perception": 15,
+      "passive_investigation": 10,
+      "passive_insight": 12
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Light Armor", "Medium Armor", "Shields"],
+      "weapons": [
+        "Longswords",
+        "Shortswords",
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "languages": ["Common", "Que-Shu"]
+    },
+    "actions": [
+      {
+        "name": "Longsword",
+        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 10 (1d8 + 3) slashing damage.",
+        "attack_bonus": 6,
+        "damage": "1d8+3",
+        "range": "5 ft."
+      },
+      {
+        "name": "Longbow",
+        "description": "Ranged Weapon Attack: +5 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage.",
+        "attack_bonus": 5,
+        "damage": "1d8+2",
+        "range": "150/600 ft."
+      }
+    ]
   },
   {
     "id": 9,
@@ -134,6 +671,7 @@
     "class": "Fighter",
     "alignment": "Lawful Evil",
     "description": "Dragon Highlord and half-sister to Caramon and Raistlin",
+    "level": 9,
     "stats": {
       "strength": 16,
       "dexterity": 16,
@@ -141,7 +679,69 @@
       "intelligence": 14,
       "wisdom": 12,
       "charisma": 15
-    }
+    },
+    "proficiency_bonus": 4,
+    "initiative": 3,
+    "armor_class": 18,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 72, "max": 72 },
+    "saving_throws": {
+      "strength": 7,
+      "dexterity": 3,
+      "constitution": 6,
+      "intelligence": 2,
+      "wisdom": 1,
+      "charisma": 2
+    },
+    "saving_throw_proficiencies": ["strength", "constitution"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 7, "proficient": true },
+      { "skill": "animal_handling", "bonus": 1, "proficient": false },
+      { "skill": "arcana", "bonus": 2, "proficient": false },
+      { "skill": "athletics", "bonus": 7, "proficient": true },
+      { "skill": "deception", "bonus": 6, "proficient": true },
+      { "skill": "history", "bonus": 6, "proficient": true },
+      { "skill": "insight", "bonus": 1, "proficient": false },
+      { "skill": "intimidation", "bonus": 6, "proficient": true },
+      { "skill": "investigation", "bonus": 2, "proficient": false },
+      { "skill": "medicine", "bonus": 1, "proficient": false },
+      { "skill": "nature", "bonus": 2, "proficient": false },
+      { "skill": "perception", "bonus": 5, "proficient": true },
+      { "skill": "performance", "bonus": 2, "proficient": false },
+      { "skill": "persuasion", "bonus": 2, "proficient": false },
+      { "skill": "religion", "bonus": 2, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 3, "proficient": false },
+      { "skill": "stealth", "bonus": 7, "proficient": true },
+      { "skill": "survival", "bonus": 1, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 15,
+      "passive_investigation": 12,
+      "passive_insight": 11
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": ["Martial Weapons", "Simple Weapons"],
+      "tools": ["Dragonchess Set"],
+      "languages": ["Common", "Draconic"]
+    },
+    "actions": [
+      {
+        "name": "Longsword",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 10 (1d8 + 3) slashing damage.",
+        "attack_bonus": 7,
+        "damage": "1d8+3",
+        "range": "5 ft."
+      },
+      {
+        "name": "Longbow",
+        "description": "Ranged Weapon Attack: +7 to hit, range 150/600 ft., one target. Hit: 7 (1d8 + 3) piercing damage.",
+        "attack_bonus": 7,
+        "damage": "1d8+3",
+        "range": "150/600 ft."
+      }
+    ]
   },
   {
     "id": 10,
@@ -150,6 +750,7 @@
     "class": "Fighter",
     "alignment": "Lawful Good",
     "description": "Elven princess who becomes the Golden General",
+    "level": 8,
     "stats": {
       "strength": 14,
       "dexterity": 16,
@@ -157,7 +758,76 @@
       "intelligence": 14,
       "wisdom": 15,
       "charisma": 17
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 3,
+    "armor_class": 17,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 56, "max": 56 },
+    "saving_throws": {
+      "strength": 5,
+      "dexterity": 3,
+      "constitution": 4,
+      "intelligence": 2,
+      "wisdom": 2,
+      "charisma": 3
+    },
+    "saving_throw_proficiencies": ["strength", "constitution"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 3, "proficient": false },
+      { "skill": "animal_handling", "bonus": 2, "proficient": false },
+      { "skill": "arcana", "bonus": 2, "proficient": false },
+      { "skill": "athletics", "bonus": 5, "proficient": true },
+      { "skill": "deception", "bonus": 3, "proficient": false },
+      { "skill": "history", "bonus": 5, "proficient": true },
+      { "skill": "insight", "bonus": 5, "proficient": true },
+      { "skill": "intimidation", "bonus": 3, "proficient": false },
+      { "skill": "investigation", "bonus": 2, "proficient": false },
+      { "skill": "medicine", "bonus": 2, "proficient": false },
+      { "skill": "nature", "bonus": 2, "proficient": false },
+      { "skill": "perception", "bonus": 5, "proficient": true },
+      { "skill": "performance", "bonus": 6, "proficient": true },
+      { "skill": "persuasion", "bonus": 6, "proficient": true },
+      { "skill": "religion", "bonus": 2, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 3, "proficient": false },
+      { "skill": "stealth", "bonus": 3, "proficient": false },
+      { "skill": "survival", "bonus": 2, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 15,
+      "passive_investigation": 12,
+      "passive_insight": 15
+    },
+    "senses": { "darkvision": 60 },
+    "defenses": ["Magical Sleep"],
+    "condition_immunities": ["charmed"],
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": [
+        "Longswords",
+        "Shortswords",
+        "Simple Weapons",
+        "Martial Weapons"
+      ],
+      "tools": [],
+      "languages": ["Common", "Elvish"]
+    },
+    "actions": [
+      {
+        "name": "Longsword",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d8 + 2) slashing damage.",
+        "attack_bonus": 5,
+        "damage": "1d8+2",
+        "range": "5 ft."
+      },
+      {
+        "name": "Longbow",
+        "description": "Ranged Weapon Attack: +6 to hit, range 150/600 ft., one target. Hit: 7 (1d8 + 3) piercing damage.",
+        "attack_bonus": 6,
+        "damage": "1d8+3",
+        "range": "150/600 ft."
+      }
+    ]
   },
   {
     "id": 11,
@@ -166,6 +836,7 @@
     "class": "Wizard",
     "alignment": "Chaotic Good",
     "description": "Seemingly absent-minded wizard, actually Paladine in disguise",
+    "level": 20,
     "stats": {
       "strength": 10,
       "dexterity": 12,
@@ -173,7 +844,82 @@
       "intelligence": 20,
       "wisdom": 20,
       "charisma": 18
-    }
+    },
+    "proficiency_bonus": 6,
+    "initiative": 1,
+    "armor_class": 17,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 120, "max": 120 },
+    "saving_throws": {
+      "strength": 0,
+      "dexterity": 1,
+      "constitution": 2,
+      "intelligence": 11,
+      "wisdom": 11,
+      "charisma": 4
+    },
+    "saving_throw_proficiencies": ["intelligence", "wisdom"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 1, "proficient": false },
+      { "skill": "animal_handling", "bonus": 5, "proficient": false },
+      { "skill": "arcana", "bonus": 11, "proficient": true },
+      { "skill": "athletics", "bonus": 0, "proficient": false },
+      { "skill": "deception", "bonus": 4, "proficient": false },
+      { "skill": "history", "bonus": 11, "proficient": true },
+      { "skill": "insight", "bonus": 11, "proficient": true },
+      { "skill": "intimidation", "bonus": 4, "proficient": false },
+      { "skill": "investigation", "bonus": 11, "proficient": true },
+      { "skill": "medicine", "bonus": 11, "proficient": true },
+      { "skill": "nature", "bonus": 11, "proficient": true },
+      { "skill": "perception", "bonus": 11, "proficient": true },
+      { "skill": "performance", "bonus": 4, "proficient": false },
+      { "skill": "persuasion", "bonus": 4, "proficient": false },
+      { "skill": "religion", "bonus": 11, "proficient": true },
+      { "skill": "sleight_of_hand", "bonus": 1, "proficient": false },
+      { "skill": "stealth", "bonus": 1, "proficient": false },
+      { "skill": "survival", "bonus": 5, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 21,
+      "passive_investigation": 21,
+      "passive_insight": 21
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": [],
+      "weapons": [
+        "Daggers",
+        "Darts",
+        "Light Crossbows",
+        "Quarterstaffs",
+        "Slings"
+      ],
+      "tools": [],
+      "languages": [
+        "Common",
+        "Draconic",
+        "Elvish",
+        "Gnomish",
+        "Infernal",
+        "Celestial"
+      ]
+    },
+    "actions": [
+      {
+        "name": "Fire Bolt",
+        "description": "Ranged Spell Attack: +11 to hit, range 120 ft., one target. Hit: 22 (4d10) fire damage.",
+        "attack_bonus": 11,
+        "damage": "4d10",
+        "range": "120 ft."
+      },
+      {
+        "name": "Quarterstaff",
+        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage.",
+        "attack_bonus": 6,
+        "damage": "1d6",
+        "range": "5 ft."
+      }
+    ]
   },
   {
     "id": 12,
@@ -182,6 +928,7 @@
     "class": "Fighter",
     "alignment": "Neutral Good",
     "description": "Former barmaid who became a skilled warrior",
+    "level": 5,
     "stats": {
       "strength": 14,
       "dexterity": 15,
@@ -189,7 +936,69 @@
       "intelligence": 11,
       "wisdom": 13,
       "charisma": 14
-    }
+    },
+    "proficiency_bonus": 3,
+    "initiative": 2,
+    "armor_class": 16,
+    "speed": { "walk": 30 },
+    "hit_points": { "current": 42, "max": 42 },
+    "saving_throws": {
+      "strength": 5,
+      "dexterity": 2,
+      "constitution": 5,
+      "intelligence": 0,
+      "wisdom": 1,
+      "charisma": 2
+    },
+    "saving_throw_proficiencies": ["strength", "constitution"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 2, "proficient": false },
+      { "skill": "animal_handling", "bonus": 1, "proficient": false },
+      { "skill": "arcana", "bonus": 0, "proficient": false },
+      { "skill": "athletics", "bonus": 5, "proficient": true },
+      { "skill": "deception", "bonus": 2, "proficient": false },
+      { "skill": "history", "bonus": 0, "proficient": false },
+      { "skill": "insight", "bonus": 4, "proficient": true },
+      { "skill": "intimidation", "bonus": 5, "proficient": true },
+      { "skill": "investigation", "bonus": 0, "proficient": false },
+      { "skill": "medicine", "bonus": 1, "proficient": false },
+      { "skill": "nature", "bonus": 0, "proficient": false },
+      { "skill": "perception", "bonus": 4, "proficient": true },
+      { "skill": "performance", "bonus": 5, "proficient": true },
+      { "skill": "persuasion", "bonus": 5, "proficient": true },
+      { "skill": "religion", "bonus": 0, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 2, "proficient": false },
+      { "skill": "stealth", "bonus": 2, "proficient": false },
+      { "skill": "survival", "bonus": 1, "proficient": false }
+    ],
+    "passive_scores": {
+      "passive_perception": 14,
+      "passive_investigation": 10,
+      "passive_insight": 14
+    },
+    "senses": {},
+    "proficiencies": {
+      "armor": ["Heavy Armor", "Light Armor", "Medium Armor", "Shields"],
+      "weapons": ["Martial Weapons", "Simple Weapons"],
+      "tools": [],
+      "languages": ["Common"]
+    },
+    "actions": [
+      {
+        "name": "Handaxe",
+        "description": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 8 (1d6 + 2) slashing damage.",
+        "attack_bonus": 5,
+        "damage": "1d6+2",
+        "range": "5 ft. / 20/60 ft."
+      },
+      {
+        "name": "Shortsword",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d6 + 2) piercing damage.",
+        "attack_bonus": 5,
+        "damage": "1d6+2",
+        "range": "5 ft."
+      }
+    ]
   },
   {
     "id": 13,
