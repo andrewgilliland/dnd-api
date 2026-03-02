@@ -93,3 +93,18 @@ def test_get_random_monster_with_filters(client):
     data = response.json()
     assert data["type"] == "Dragon"
     assert 5 <= data["challenge_rating"] <= 10
+
+
+def test_adult_black_dragon_has_legendary_actions_and_proficiency_bonus(client):
+    """Test that Adult Black Dragon exposes legendary action and proficiency fields"""
+    response = client.get("/api/v1/monsters?name=adult black dragon&limit=100")
+    assert response.status_code == 200
+    data = response.json()
+
+    monster = next(
+        (m for m in data["monsters"] if m["name"] == "Adult Black Dragon"), None
+    )
+    assert monster is not None
+    assert monster["proficiency_bonus"] == 5
+    assert isinstance(monster["legendary_actions"], list)
+    assert len(monster["legendary_actions"]) > 0
