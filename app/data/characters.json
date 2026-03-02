@@ -190,5 +190,91 @@
       "wisdom": 13,
       "charisma": 14
     }
+  },
+  {
+    "id": 13,
+    "name": "Ravyn Dusk'rel",
+    "race": "Elf",
+    "class": "Ranger",
+    "alignment": "Chaotic Good",
+    "description": "A level 1 elf ranger with keen senses and disciplined martial training.",
+    "level": 1,
+    "stats": {
+      "strength": 13,
+      "dexterity": 20,
+      "constitution": 16,
+      "intelligence": 17,
+      "wisdom": 17,
+      "charisma": 14
+    },
+    "proficiency_bonus": 2,
+    "initiative": 5,
+    "armor_class": 15,
+    "speed": { "walk": 30 },
+    "hit_points": {
+      "current": 13,
+      "max": 13,
+      "temp": null
+    },
+    "saving_throws": {
+      "strength": 3,
+      "dexterity": 7,
+      "constitution": 3,
+      "intelligence": 3,
+      "wisdom": 3,
+      "charisma": 2
+    },
+    "saving_throw_proficiencies": ["strength", "dexterity", "wisdom"],
+    "skills": [
+      { "skill": "acrobatics", "bonus": 5, "proficient": false },
+      { "skill": "animal_handling", "bonus": 5, "proficient": true },
+      { "skill": "arcana", "bonus": 3, "proficient": false },
+      { "skill": "athletics", "bonus": 3, "proficient": false },
+      { "skill": "deception", "bonus": 2, "proficient": false },
+      { "skill": "history", "bonus": 3, "proficient": false },
+      { "skill": "insight", "bonus": 5, "proficient": true },
+      { "skill": "intimidation", "bonus": 4, "proficient": false },
+      { "skill": "investigation", "bonus": 3, "proficient": false },
+      { "skill": "medicine", "bonus": 3, "proficient": false },
+      { "skill": "nature", "bonus": 3, "proficient": false },
+      { "skill": "perception", "bonus": 5, "proficient": false },
+      { "skill": "performance", "bonus": 2, "proficient": false },
+      { "skill": "persuasion", "bonus": 2, "proficient": false },
+      { "skill": "religion", "bonus": 3, "proficient": false },
+      { "skill": "sleight_of_hand", "bonus": 5, "proficient": false },
+      { "skill": "stealth", "bonus": 7, "proficient": true },
+      { "skill": "survival", "bonus": 5, "proficient": true }
+    ],
+    "passive_scores": {
+      "passive_perception": 13,
+      "passive_investigation": 13,
+      "passive_insight": 15
+    },
+    "senses": { "darkvision": 120 },
+    "defenses": ["Magical Sleep"],
+    "condition_immunities": ["charmed"],
+    "proficiencies": {
+      "armor": ["Light Armor", "Medium Armor", "Shields"],
+      "weapons": ["Longsword", "Martial Weapons", "Simple Weapons"],
+      "tools": ["Dragonchess Set"],
+      "languages": ["Common", "Elvish", "Gnomish"]
+    },
+    "actions": [
+      {
+        "name": "Unarmed Strike",
+        "description": "You make a melee attack using your body. On a hit, deal bludgeoning damage and choose one effect: damage only, grapple (save DC = 8 + proficiency bonus + Strength modifier), shove 5 ft., or knock prone.",
+        "attack_bonus": 3,
+        "damage": "2 bludgeoning",
+        "range": "5 ft."
+      },
+      {
+        "name": "Sap (Longsword)",
+        "description": "If you hit a creature with a longsword, that creature has disadvantage on its next attack roll before the start of your next turn."
+      },
+      {
+        "name": "Slow (Longbow)",
+        "description": "If you hit a creature with a longbow and deal damage, its speed is reduced by 10 ft. until the start of your next turn (minimum reduction once per turn)."
+      }
+    ]
   }
 ]

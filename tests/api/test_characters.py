@@ -91,3 +91,27 @@ def test_get_random_character(client):
         ]
     )
     assert all(3 <= stats[key] <= 18 for key in stats)
+
+
+def test_ravyn_character_sheet_fields(client):
+    """Test that Ravyn Dusk'rel returns extended character-sheet fields"""
+    response = client.get("/api/v1/characters?name=ravyn&limit=100")
+    assert response.status_code == 200
+    data = response.json()
+
+    character = next(
+        (c for c in data["characters"] if c["name"] == "Ravyn Dusk'rel"), None
+    )
+    assert character is not None
+    assert character["class"] == "Ranger"
+    assert character["level"] == 1
+    assert character["proficiency_bonus"] == 2
+    assert character["armor_class"] == 15
+    assert character["hit_points"]["current"] == 13
+    assert character["senses"]["darkvision"] == 120
+    assert isinstance(character["skills"], list)
+    stealth = next((s for s in character["skills"] if s["skill"] == "stealth"), None)
+    assert stealth is not None
+    assert stealth["bonus"] == 7
+    assert stealth["proficient"] is True
+    assert len(character["actions"]) >= 1
