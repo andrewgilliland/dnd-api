@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: "3.12"
+    commands:
+      - pip install --upgrade pip
+
+  pre_build:
+    commands:
+      - echo "Installing dependencies into build/"
+      - mkdir -p build
+      - pip install -r requirements.txt -t build/
+
+  build:
+    commands:
+      - echo "Copying application code"
+      - cp -r app build/
+      - echo "Creating deployment zip"
+      - cd build && zip -r ../lambda.zip . && cd ..
+      - echo "Build complete — $(ls -lh lambda.zip)"
+
+artifacts:
+  files:
+    - lambda.zip
+  discard-paths: yes
+
+cache:
+  paths:
+    - build/**/*
