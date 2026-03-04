@@ -5,8 +5,10 @@ from aws_cdk import (
     Duration,
     CfnOutput,
     BundlingOptions,
+    RemovalPolicy,
     aws_lambda as lambda_,
     aws_apigateway as apigateway,
+    aws_cognito as cognito,
     aws_logs as logs,
 )
 from constructs import Construct
@@ -22,14 +24,59 @@ class DndApiStack(Stack):
 
         self.deployment_env = deployment_env
 
+        # Create Cognito User Pool
+        self.user_pool, self.user_pool_client = self._create_cognito()
+
         # Create Lambda function
         self.lambda_function = self._create_lambda_function()
 
-        # Create API Gateway
+        # Create API Gateway with Cognito authorizer
         self.api = self._create_api_gateway()
 
         # Create outputs
         self._create_outputs()
+
+    def _create_cognito(
+        self,
+    ) -> tuple[cognito.UserPool, cognito.UserPoolClient]:
+        """Create Cognito User Pool and App Client for JWT authentication"""
+
+        user_pool = cognito.UserPool(
+            self,
+            "DndApiUserPool",
+            user_pool_name=f"dnd-api-users-{self.deployment_env}",
+            # Users must be created by an admin — no public self-signup
+            self_sign_up_enabled=False,
+            sign_in_aliases=cognito.SignInAliases(email=True, username=True),
+            password_policy=cognito.PasswordPolicy(
+                min_length=12,
+                require_lowercase=True,
+                require_uppercase=True,
+                require_digits=True,
+                require_symbols=True,
+            ),
+            account_recovery=cognito.AccountRecovery.EMAIL_ONLY,
+            removal_policy=RemovalPolicy.DESTROY
+            if self.deployment_env == "dev"
+            else RemovalPolicy.RETAIN,
+        )
+
+        # App client — no client secret so tokens can be retrieved from CLI/frontend
+        user_pool_client = user_pool.add_client(
+            "DndApiUserPoolClient",
+            user_pool_client_name=f"dnd-api-client-{self.deployment_env}",
+            auth_flows=cognito.AuthFlow(
+                user_password=True,
+                user_srp=True,
+            ),
+            # Token validity
+            access_token_validity=Duration.hours(1),
+            id_token_validity=Duration.hours(1),
+            refresh_token_validity=Duration.days(30),
+            generate_secret=False,
+        )
+
+        return user_pool, user_pool_client
 
     def _create_lambda_function(self) -> lambda_.Function:
         """Create the Lambda function for the D&D API"""
@@ -76,7 +123,16 @@ class DndApiStack(Stack):
         return function
 
     def _create_api_gateway(self) -> apigateway.LambdaRestApi:
-        """Create API Gateway for the Lambda function"""
+        """Create API Gateway with Cognito JWT authorizer"""
+
+        authorizer = apigateway.CognitoUserPoolsAuthorizer(
+            self,
+            "DndApiCognitoAuthorizer",
+            cognito_user_pools=[self.user_pool],
+            authorizer_name=f"dnd-api-cognito-authorizer-{self.deployment_env}",
+            # Cache the authorization result for 5 minutes to reduce Cognito calls
+            results_cache_ttl=Duration.minutes(5),
+        )
 
         api = apigateway.LambdaRestApi(
             self,
@@ -85,6 +141,11 @@ class DndApiStack(Stack):
             rest_api_name=f"dnd-api-{self.deployment_env}",
             proxy=True,
             description=f"D&D API Gateway - {self.deployment_env}",
+            # Require a valid Cognito JWT on every method except OPTIONS (CORS preflight)
+            default_method_options=apigateway.MethodOptions(
+                authorizer=authorizer,
+                authorization_type=apigateway.AuthorizationType.COGNITO,
+            ),
             deploy_options=apigateway.StageOptions(
                 stage_name=self.deployment_env,
                 throttling_rate_limit=100,
@@ -113,6 +174,22 @@ class DndApiStack(Stack):
 
     def _create_outputs(self) -> None:
         """Create CloudFormation outputs"""
+
+        CfnOutput(
+            self,
+            "UserPoolId",
+            value=self.user_pool.user_pool_id,
+            description="Cognito User Pool ID",
+            export_name=f"DndApiUserPoolId-{self.deployment_env}",
+        )
+
+        CfnOutput(
+            self,
+            "UserPoolClientId",
+            value=self.user_pool_client.user_pool_client_id,
+            description="Cognito User Pool App Client ID",
+            export_name=f"DndApiUserPoolClientId-{self.deployment_env}",
+        )
 
         CfnOutput(
             self,
