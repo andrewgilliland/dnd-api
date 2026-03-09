@@ -19,7 +19,7 @@ class Settings(BaseSettings):
 
     # CORS Settings
     cors_allowed_origins: str = Field(
-        default="http://localhost:5173,http://127.0.0.1:5173"
+        default="http://localhost:5173,http://127.0.0.1:5173,https://d1m14xkjj5xzav.cloudfront.net"
     )
 
     model_config = SettingsConfigDict(
