@@ -102,6 +102,7 @@ class DndApiStack(Stack):
                 "../",
                 bundling=BundlingOptions(
                     image=lambda_.Runtime.PYTHON_3_12.bundling_image,
+                    platform="linux/arm64",
                     command=[
                         "bash",
                         "-c",
