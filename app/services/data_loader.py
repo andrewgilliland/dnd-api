@@ -49,3 +49,11 @@ def load_monster_names():
     file_path = Path(__file__).parent.parent / "data" / "monster_names.json"
     with open(file_path, "r") as f:
         return json.load(f)
+
+
+@lru_cache(maxsize=1)
+def load_spells():
+    """Load and cache spell data to avoid reading file on every request"""
+    file_path = Path(__file__).parent.parent / "data" / "spells.json"
+    with open(file_path, "r") as f:
+        return json.load(f)

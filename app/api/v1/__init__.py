@@ -1,7 +1,7 @@
 """API v1 router aggregation"""
 
 from fastapi import APIRouter
-from app.api.v1 import characters, monsters, game_data, items, combat
+from app.api.v1 import characters, monsters, game_data, items, combat, spells
 
 # Create a main router for v1
 api_router = APIRouter()
@@ -12,3 +12,4 @@ api_router.include_router(monsters.router, prefix="/monsters", tags=["monsters"]
 api_router.include_router(game_data.router, tags=["game-data"])
 api_router.include_router(items.router, prefix="/items", tags=["items"])
 api_router.include_router(combat.router, prefix="/combat", tags=["combat"])
+api_router.include_router(spells.router, prefix="/spells", tags=["spells"])
