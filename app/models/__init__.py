@@ -4,6 +4,7 @@ from .common import Alignment, Size, Stats
 from .character import Class, Race, Character
 from .monster import MonsterType, DamageType, Action, Monster
 from .item import ItemType, Rarity, Item
+from .spell import SpellSchool, SpellComponent, Spell
 from .combat import (
     AdvantageType,
     SavingThrowAbility,
@@ -22,6 +23,7 @@ from .responses import (
     RaceResponse,
     MonstersResponse,
     ItemsResponse,
+    SpellsResponse,
 )
 
 __all__ = [
@@ -42,6 +44,10 @@ __all__ = [
     "ItemType",
     "Rarity",
     "Item",
+    # Spell
+    "SpellSchool",
+    "SpellComponent",
+    "Spell",
     # Combat
     "AdvantageType",
     "SavingThrowAbility",
@@ -59,4 +65,5 @@ __all__ = [
     "RaceResponse",
     "MonstersResponse",
     "ItemsResponse",
+    "SpellsResponse",
 ]

@@ -59,6 +59,18 @@ class CostRangeParams:
         self.max_cost = max_cost
 
 
+class SpellLevelParams:
+    """Spell level filter parameters"""
+
+    def __init__(
+        self,
+        min_level: int | None = Query(None, ge=0, le=9, description="Minimum spell level (0=cantrip)"),
+        max_level: int | None = Query(None, ge=0, le=9, description="Maximum spell level (0=cantrip)"),
+    ):
+        self.min_level = min_level
+        self.max_level = max_level
+
+
 # Settings Dependency
 def get_settings() -> Settings:
     """Get application settings"""
@@ -70,4 +82,5 @@ CommonPagination = Annotated[PaginationParams, Depends(PaginationParams)]
 CommonSearch = Annotated[SearchParams, Depends(SearchParams)]
 CommonChallengeRating = Annotated[ChallengeRatingParams, Depends(ChallengeRatingParams)]
 CommonCostRange = Annotated[CostRangeParams, Depends(CostRangeParams)]
+CommonSpellLevel = Annotated[SpellLevelParams, Depends(SpellLevelParams)]
 CommonSettings = Annotated[Settings, Depends(get_settings)]

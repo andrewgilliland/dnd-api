@@ -3,6 +3,7 @@
 from .character_responses import CharactersResponse, ClassResponse, RaceResponse
 from .monster_responses import MonstersResponse
 from .item_responses import ItemsResponse
+from .spell_responses import SpellsResponse
 
 __all__ = [
     "CharactersResponse",
@@ -10,4 +11,5 @@ __all__ = [
     "RaceResponse",
     "MonstersResponse",
     "ItemsResponse",
+    "SpellsResponse",
 ]
