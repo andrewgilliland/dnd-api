@@ -50,6 +50,47 @@ def sample_monster():
 
 
 @pytest.fixture
+def sample_party():
+    """Sample party data for testing"""
+    return {
+        "name": "Test Party",
+        "members": [
+            {
+                "characterId": 1,
+                "role": "tank",
+                "isLeader": True,
+                "marchingOrder": 1,
+            },
+            {
+                "characterId": 2,
+                "role": "healer",
+                "isLeader": False,
+                "marchingOrder": 2,
+            },
+            {
+                "characterId": 3,
+                "role": "caster",
+                "isLeader": False,
+                "marchingOrder": 3,
+            },
+        ],
+        "notes": "A test party for D&D adventures",
+        "tags": ["test", "campaign"],
+    }
+
+
+@pytest.fixture
+def sample_party_member():
+    """Sample party member data for testing"""
+    return {
+        "characterId": 1,
+        "role": "tank",
+        "isLeader": True,
+        "marchingOrder": 1,
+    }
+
+
+@pytest.fixture
 def sample_item():
     """Sample item data for testing"""
     return {

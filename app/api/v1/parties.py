@@ -2,7 +2,13 @@
 
 from datetime import datetime
 from fastapi import APIRouter, Query
-from app.models.party import Party, PartyMember, PartyStatus, PartyRole, CreatePartyRequest
+from app.models.party import (
+    Party,
+    PartyMember,
+    PartyStatus,
+    PartyRole,
+    CreatePartyRequest,
+)
 from app.models.responses.party_responses import PartiesResponse
 
 router = APIRouter()
@@ -57,7 +63,7 @@ MOCK_PARTIES = [
             ),
             PartyMember(
                 character_id=5,
-                role=PartyRole.ROGUE,
+                role=PartyRole.STRIKER,
                 is_leader=False,
                 marching_order=2,
                 joined_at=datetime.now().isoformat(),
@@ -74,7 +80,9 @@ MOCK_PARTIES = [
 @router.get("", response_model=PartiesResponse)
 def get_parties(
     skip: int = Query(0, ge=0, description="Number of records to skip"),
-    limit: int = Query(10, ge=1, le=100, description="Maximum number of records to return"),
+    limit: int = Query(
+        10, ge=1, le=100, description="Maximum number of records to return"
+    ),
     name: str | None = Query(None, description="Filter by party name (partial match)"),
 ):
     """
@@ -92,8 +100,7 @@ def get_parties(
     if name:
         name_lower = name.lower()
         filtered_parties = [
-            party for party in filtered_parties
-            if name_lower in party.name.lower()
+            party for party in filtered_parties if name_lower in party.name.lower()
         ]
 
     total = len(filtered_parties)
