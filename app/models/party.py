@@ -37,6 +37,17 @@ class PartyMember(BaseModel):
     joined_at: str = Field(alias="joinedAt")
 
 
+class CreatePartyMember(BaseModel):
+    """Request model for creating a party member (no joinedAt required)"""
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    character_id: int = Field(alias="characterId")
+    role: PartyRole | None = None
+    is_leader: bool = Field(default=False, alias="isLeader")
+    marching_order: int = Field(alias="marchingOrder")
+
+
 class Party(BaseModel):
     """A D&D party/adventuring group"""
 
@@ -59,6 +70,6 @@ class CreatePartyRequest(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
     name: str
-    members: list[dict]
+    members: list[CreatePartyMember]
     notes: str | None = None
     tags: list[str] | None = None

@@ -5,7 +5,7 @@ from .character import Class, Race, Character
 from .monster import MonsterType, DamageType, Action, Monster
 from .item import ItemType, Rarity, Item
 from .spell import SpellSchool, SpellComponent, Spell
-from .party import Party, PartyMember, PartyRole, PartyStatus, CreatePartyRequest
+from .party import Party, PartyMember, PartyRole, PartyStatus, CreatePartyRequest, CreatePartyMember
 from .combat import (
     AdvantageType,
     SavingThrowAbility,

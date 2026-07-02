@@ -5,6 +5,7 @@ from fastapi import APIRouter, Query
 from app.models.party import (
     Party,
     PartyMember,
+    CreatePartyMember,
     PartyStatus,
     PartyRole,
     CreatePartyRequest,
@@ -14,28 +15,28 @@ from app.models.responses.party_responses import PartiesResponse
 router = APIRouter()
 
 # Mock data for parties
-MOCK_PARTIES = [
-    Party(
+MOCK_PARTIES: list[Party] = [
+    Party.model_construct(
         id="party-1",
         name="Stormbreakers",
         created_by_user_id="user-1",
         status=PartyStatus.ACTIVE,
         members=[
-            PartyMember(
+            PartyMember.model_construct(
                 character_id=1,
                 role=PartyRole.TANK,
                 is_leader=True,
                 marching_order=1,
                 joined_at=datetime.now().isoformat(),
             ),
-            PartyMember(
+            PartyMember.model_construct(
                 character_id=2,
                 role=PartyRole.HEALER,
                 is_leader=False,
                 marching_order=2,
                 joined_at=datetime.now().isoformat(),
             ),
-            PartyMember(
+            PartyMember.model_construct(
                 character_id=3,
                 role=PartyRole.CASTER,
                 is_leader=False,
@@ -48,20 +49,20 @@ MOCK_PARTIES = [
         created_at=datetime.now().isoformat(),
         updated_at=datetime.now().isoformat(),
     ),
-    Party(
+    Party.model_construct(
         id="party-2",
         name="Shadow Runners",
         created_by_user_id="user-2",
         status=PartyStatus.ACTIVE,
         members=[
-            PartyMember(
+            PartyMember.model_construct(
                 character_id=4,
                 role=PartyRole.SCOUT,
                 is_leader=True,
                 marching_order=1,
                 joined_at=datetime.now().isoformat(),
             ),
-            PartyMember(
+            PartyMember.model_construct(
                 character_id=5,
                 role=PartyRole.STRIKER,
                 is_leader=False,
@@ -84,7 +85,7 @@ def get_parties(
         10, ge=1, le=100, description="Maximum number of records to return"
     ),
     name: str | None = Query(None, description="Filter by party name (partial match)"),
-):
+) -> PartiesResponse:
     """
     Get all parties with optional filtering and pagination.
 
@@ -106,16 +107,16 @@ def get_parties(
     total = len(filtered_parties)
     paginated = filtered_parties[skip : skip + limit]
 
-    return {
-        "parties": paginated,
-        "total": total,
-        "skip": skip,
-        "limit": limit,
-    }
+    return PartiesResponse(
+        parties=paginated,
+        total=total,
+        skip=skip,
+        limit=limit,
+    )
 
 
 @router.post("", response_model=Party)
-def create_party(request: CreatePartyRequest):
+def create_party(request: CreatePartyRequest) -> Party:
     """
     Create a new party.
 
@@ -124,19 +125,19 @@ def create_party(request: CreatePartyRequest):
     """
     now = datetime.now().isoformat()
 
-    # Convert request members to PartyMember objects
+    # Convert CreatePartyMember to PartyMember with joined_at timestamp
     members = [
-        PartyMember(
-            character_id=member.get("characterId"),
-            role=PartyRole(member.get("role")) if member.get("role") else None,
-            is_leader=member.get("isLeader", False),
-            marching_order=member.get("marchingOrder", 0),
+        PartyMember.model_construct(
+            character_id=member.character_id,
+            role=member.role,
+            is_leader=member.is_leader,
+            marching_order=member.marching_order,
             joined_at=now,
         )
         for member in request.members
     ]
 
-    party = Party(
+    party = Party.model_construct(
         id=f"party-{len(MOCK_PARTIES) + 1}",
         name=request.name,
         created_by_user_id="current-user",

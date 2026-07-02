@@ -1,0 +1,6 @@
+{
+  "include": ["app"],
+  "exclude": ["**/__pycache__", "cdk", "tests"],
+  "typeCheckingMode": "standard",
+  "pythonVersion": "3.14"
+}
